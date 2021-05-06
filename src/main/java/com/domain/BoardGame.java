@@ -1,0 +1,33 @@
+package com.domain;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity(name = "GAMES")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class BoardGame {
+    @Id
+    @GeneratedValue
+    @Column(name = "Game_ID", unique = true, nullable = false)
+    private long id;
+
+    @Column(name = "Title", nullable = false)
+    private String title;
+
+    @Column(name = "Type")
+    private String type;
+
+    @Column(name = "Price", nullable = false)
+    private double price;
+
+    @Column(name = "Copies_On_Stock", nullable = false)
+    private int copies;
+}
