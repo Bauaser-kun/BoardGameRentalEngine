@@ -15,7 +15,7 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue
-    @Column(name = "Game_ID", unique = true, nullable = false)
+    @Column(name = "User_ID")
     private long id;
 
     @Column(name = "username", nullable = false)

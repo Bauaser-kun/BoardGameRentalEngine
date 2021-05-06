@@ -3,6 +3,7 @@ package com.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 public class BoardGame {
     @Id
     @GeneratedValue
-    @Column(name = "Game_ID", unique = true, nullable = false)
+    @Column(name = "Game_ID")
     private long id;
 
     @Column(name = "Title", nullable = false)
@@ -31,4 +32,10 @@ public class BoardGame {
 
     @OneToMany(mappedBy = "game")
     private List<RentedGame> rentedGames;
+
+    public BoardGame(String title, double price, int copies) {
+        this.title = title;
+        this.price = price;
+        this.copies = copies;
+    }
 }
