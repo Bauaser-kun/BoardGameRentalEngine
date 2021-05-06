@@ -31,6 +31,7 @@ public class BoardGameRepositoryTestSuite {
         long id = game.getId();
         Optional<BoardGame> readGame = boardGameRepository.findById(id);
         assertTrue(readGame.isPresent());
+
         //Cleanup
         boardGameRepository.deleteById(id);
         }

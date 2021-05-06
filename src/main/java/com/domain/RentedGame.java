@@ -1,7 +1,6 @@
 package com.domain;
 
 import lombok.Data;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -10,13 +9,7 @@ import java.time.LocalDate;
 public class RentedGame {
     @Id
     @GeneratedValue
-    private long id;
-
-    @Column(name = "Rented_on")
-    private LocalDate rentedOn;
-
-    @Column(name = "ReturnDate")
-    private LocalDate returnDate;
+    private Long id;
 
     @ManyToOne
     private BoardGame game;
@@ -24,4 +17,9 @@ public class RentedGame {
     @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
+    @Column(name = "Rented_on")
+    private LocalDate rentedOn;
+
+    @Column(name = "ReturnDate")
+    private LocalDate returnDate;
 }

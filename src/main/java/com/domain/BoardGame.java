@@ -3,8 +3,6 @@ package com.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,7 +14,7 @@ public class BoardGame {
     @Id
     @GeneratedValue
     @Column(name = "Game_ID")
-    private long id;
+    private Long id;
 
     @Column(name = "Title", nullable = false)
     private String title;
