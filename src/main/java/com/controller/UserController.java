@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/V1/rentedGames")
-public class RentalController {
-    /*
-    getRentedGames
-    getGamesRentedByUser
-    updateRentedGame
-    createRentedGame
-    deleteRentedGame
-     */
+@RequestMapping("/V1/Users")
+public class UserController {
+  /*
+  getUsers
+  getUser
+  updateUser
+  deleteUser
+  createUser
+   */
 }
