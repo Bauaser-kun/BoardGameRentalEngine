@@ -4,11 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity(name = "USERS")
 @Data
@@ -37,4 +35,7 @@ public class User {
 
     @Column(name = "registered_on", nullable = false)
     private LocalDate registeredOn;
+
+    @OneToMany(mappedBy = "user")
+    private List<RentedGame> rentedGames;
 }

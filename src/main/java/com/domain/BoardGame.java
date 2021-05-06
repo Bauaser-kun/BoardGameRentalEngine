@@ -4,10 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "GAMES")
 @Data
@@ -30,4 +28,7 @@ public class BoardGame {
 
     @Column(name = "Copies_On_Stock", nullable = false)
     private int copies;
+
+    @OneToMany(mappedBy = "game")
+    private List<RentedGame> rentedGames;
 }
