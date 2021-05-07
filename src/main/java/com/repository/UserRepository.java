@@ -18,8 +18,8 @@ public interface UserRepository extends CrudRepository<User, Long> {
     User save (User user);
 
     @Override
-    Optional<User> findById(Long UserId);
+    Optional<User> findById(Long uerId);
 
     @Override
-    void delete(User userId);
+    void deleteById(Long userId);
 }

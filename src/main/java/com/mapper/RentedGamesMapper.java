@@ -19,11 +19,11 @@ public class RentedGamesMapper {
                 rentedGame.getRentedOn(), rentedGame.getReturnDate());
     }
 
-    public List<RentedGame> rentedGames(final List<RentedGameDto> rentedGameDtos) {
+    public List<RentedGame> mapToRentedGameList(final List<RentedGameDto> rentedGameDtos) {
         return rentedGameDtos.stream().map(this::mapToRentedGame).collect(Collectors.toList());
     }
 
-    public List<RentedGameDto> rentedGameDtos(final List<RentedGame> rentedGames) {
+    public List<RentedGameDto> mapToRentedGameDtoList(final List<RentedGame> rentedGames) {
         return rentedGames.stream().map(this::mapToRentedGameDto).collect(Collectors.toList());
     }
 }

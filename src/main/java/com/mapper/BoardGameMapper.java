@@ -19,11 +19,11 @@ public class BoardGameMapper {
                 boardGame.getPrice(), boardGame.getCopies(), boardGame.getRentedGames());
     }
 
-    public List<BoardGame> gameList(final List<BoardGameDto> gameDtos) {
+    public List<BoardGame> mapToGameList(final List<BoardGameDto> gameDtos) {
         return gameDtos.stream().map(this::mapToGame).collect(Collectors.toList());
     }
 
-    public List<BoardGameDto> gameDtos(final List<BoardGame> games) {
+    public List<BoardGameDto> mapToGameDtoList(final List<BoardGame> games) {
         return games.stream().map(this::mapToGameDto).collect(Collectors.toList());
     }
 }

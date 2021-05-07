@@ -19,11 +19,11 @@ public class UserMapper {
                 user.getUserLevel(), user.getEmail(), user.getRegisteredOn(), user.getRentedGames());
     }
 
-    public List<User> userList(final List<UserDto> userDtos) {
+    public List<User> mapToUserList(final List<UserDto> userDtos) {
         return userDtos.stream().map(this::mapToUser).collect(Collectors.toList());
     }
 
-    public List<UserDto> userDtos(final List<User> users) {
+    public List<UserDto> mapToUserDtoList(final List<User> users) {
         return users.stream().map(this::mapToUserDto).collect(Collectors.toList());
     }
 }
