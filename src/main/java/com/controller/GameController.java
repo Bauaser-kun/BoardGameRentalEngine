@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
+@RequestMapping("/V1/Games/")
 public class GameController {
     @Autowired
     BoardGameMapper mapper;
@@ -39,9 +40,14 @@ public class GameController {
     }
 
     @DeleteMapping(value = "deleteGame")
-    public void deleteGame(@RequestParam Long gameId) throws GameNotFoundException {
+    public void deleteGame(@RequestParam(required = false) Long gameId, @RequestParam(required = false) String title) throws GameNotFoundException {
         try {
-            dbService.deleteGame(gameId);
+            if (gameId == null) {
+                dbService.deleteGame(title);
+            } else {
+                dbService.deleteGame(gameId);
+            }
+
         } catch (IllegalArgumentException e) {
             throw new GameNotFoundException();
         }

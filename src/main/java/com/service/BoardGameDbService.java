@@ -44,4 +44,8 @@ public class BoardGameDbService {
     public void deleteGame(final Long gameId) {
         repository.deleteById(gameId);
     }
+
+    public void deleteGame(final String title) {
+        repository.deleteById(getGameId(title));
+    }
 }
