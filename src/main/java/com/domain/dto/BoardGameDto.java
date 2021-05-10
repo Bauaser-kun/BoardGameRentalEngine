@@ -1,5 +1,6 @@
 package com.domain.dto;
 
+import com.domain.Order;
 import com.domain.RentedGame;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,4 +18,5 @@ public class BoardGameDto {
     private double price;
     private int copies;
     private List<RentedGame> rentedGames;
+    private Order order;
 }

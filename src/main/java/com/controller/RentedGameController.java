@@ -31,7 +31,7 @@ public class RentedGameController {
     }
 
     @PutMapping(value = "updateRent")
-    public RentedGameDto updateUser(@RequestBody RentedGameDto rentedGameDto) {
+    public RentedGameDto updateRentedGame(@RequestBody RentedGameDto rentedGameDto) {
         RentedGame savedGame = dbService.saveRentedGame(mapper.mapToRentedGame(rentedGameDto));
         return mapper.mapToRentedGameDto(savedGame);
     }

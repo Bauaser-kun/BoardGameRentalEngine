@@ -32,6 +32,9 @@ public class BoardGame {
     @OneToMany(mappedBy = "game")
     private List<RentedGame> rentedGames;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Order order;
+
     public BoardGame(String title, double price, int copies) {
         this.title = title;
         this.price = price;

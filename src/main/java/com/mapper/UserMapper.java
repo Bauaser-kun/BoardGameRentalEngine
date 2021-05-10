@@ -11,12 +11,14 @@ import java.util.stream.Collectors;
 public class UserMapper {
     public User mapToUser(UserDto userDto) {
         return new User(userDto.getId(), userDto.getUsername(), userDto.getName(), userDto.getSurname(),
-                userDto.getUserLevel(), userDto.getEmail(), userDto.getRegisteredOn(), userDto.getRentedGames());
+                userDto.getUserLevel(), userDto.getEmail(), userDto.getRegisteredOn(), userDto.getRentedGames(),
+                userDto.getOrders());
     }
 
     public UserDto mapToUserDto(User user) {
         return new UserDto(user.getId(), user.getUsername(), user.getName(), user.getSurname(),
-                user.getUserLevel(), user.getEmail(), user.getRegisteredOn(), user.getRentedGames());
+                user.getUserLevel(), user.getEmail(), user.getRegisteredOn(), user.getRentedGames(),
+                user.getOrders());
     }
 
     public List<User> mapToUserList(final List<UserDto> userDtos) {

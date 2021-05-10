@@ -11,12 +11,12 @@ import java.util.stream.Collectors;
 public class BoardGameMapper {
     public BoardGame mapToGame(BoardGameDto boardGameDto) {
         return new BoardGame(boardGameDto.getId(), boardGameDto.getTitle(), boardGameDto.getType(),
-                boardGameDto.getPrice(), boardGameDto.getCopies(), boardGameDto.getRentedGames());
+                boardGameDto.getPrice(), boardGameDto.getCopies(), boardGameDto.getRentedGames(), boardGameDto.getOrder());
     }
 
     public BoardGameDto mapToGameDto(BoardGame boardGame){
         return new BoardGameDto(boardGame.getId(), boardGame.getTitle(), boardGame.getType(),
-                boardGame.getPrice(), boardGame.getCopies(), boardGame.getRentedGames());
+                boardGame.getPrice(), boardGame.getCopies(), boardGame.getRentedGames(), boardGame.getOrder());
     }
 
     public List<BoardGame> mapToGameList(final List<BoardGameDto> gameDtos) {

@@ -1,5 +1,6 @@
 package com.domain.dto;
 
+import com.domain.Order;
 import com.domain.RentedGame;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,4 +21,5 @@ public class UserDto {
     private String email;
     private LocalDate registeredOn;
     private List<RentedGame> rentedGames;
+    private List<Order> orders;
 }
