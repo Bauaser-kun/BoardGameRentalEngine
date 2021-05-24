@@ -4,7 +4,6 @@ import com.BoardGameAtlas.BoardGameAtlasClient;
 import com.controller.exceptions.GameNotFoundException;
 import com.domain.dto.AtlasForumPostDto;
 import com.domain.dto.AtlasGameDto;
-import com.domain.dto.BoardGameDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,16 +32,22 @@ public class BoardGameAtlasController {
         return boardGames;
     }
 
-    @GetMapping("getGame")
+    @GetMapping("Game")
     public List<AtlasGameDto> getGame(@RequestParam String title) throws GameNotFoundException {
         List<AtlasGameDto> boardGames = boardGameAtlasClient.getGame(title);
         boardGames.forEach(boardGameDto -> System.out.println(boardGameDto.getName()));
         return boardGames;
     }
 
-    @GetMapping("getBgaForum")
-    public void getDiscusion(@RequestParam(required = false) String topic) {
-        List<AtlasForumPostDto> posts = boardGameAtlasClient.getForumPosts(topic);
+    @GetMapping("Forum")
+    public void getAllTopics() {
+        List<AtlasForumPostDto> posts = boardGameAtlasClient.getAllForumTopics();
+        posts.forEach(post -> System.out.println(post.getTitle() + "\n" + post.getPost_url()));
+    }
+
+    @GetMapping("Topic")
+    public void getTopics(@RequestParam String topic) {
+        List<AtlasForumPostDto> posts = boardGameAtlasClient.getForumTopics(topic);
         posts.forEach(post -> System.out.println(post.getTitle() + "\n" + post.getPost_url()));
     }
 }

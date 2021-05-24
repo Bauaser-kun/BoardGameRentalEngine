@@ -26,7 +26,7 @@ public class GameController {
     }
 
     @GetMapping(value = "getGame")
-    public BoardGameDto getGame(@RequestParam(required = false) String gameId, @RequestParam(required = false) String title) throws GameNotFoundException {
+    public BoardGameDto getGame(@RequestParam(required = false) Long gameId, @RequestParam(required = false) String title) throws GameNotFoundException {
         if (gameId == null) {
             return mapper.mapToGameDto(dbService.getGame(gameId).orElseThrow(GameNotFoundException::new));
         } else {
@@ -40,7 +40,7 @@ public class GameController {
     }
 
     @DeleteMapping(value = "deleteGame")
-    public void deleteGame(@RequestParam(required = false) String gameId, @RequestParam(required = false) String title) throws GameNotFoundException {
+    public void deleteGame(@RequestParam(required = false) Long gameId, @RequestParam(required = false) String title) throws GameNotFoundException {
         try {
             if (gameId == null) {
                 dbService.deleteGame(title);

@@ -43,6 +43,8 @@ public class RentedGameDbService {
     }
 
     public void deleteRentedGame(final Long gameId) {
+        BoardGame returnedGame = boardGameDbService.getGame(gameId).get();
+        boardGameDbService.saveGame(processor.increaseAvailableCopies(returnedGame));
         repository.deleteById(gameId);
     }
 }

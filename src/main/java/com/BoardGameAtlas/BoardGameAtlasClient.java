@@ -73,9 +73,8 @@ public class BoardGameAtlasClient {
         }
     }
 
-    public List<AtlasForumPostDto> getForumPosts(String topic) {
+    public List<AtlasForumPostDto> getAllForumTopics() {
         URI url = UriComponentsBuilder.fromHttpUrl(atlasConfig.getApiEndpoint() + "/forum")
-                .queryParam("search", topic)
                 .queryParam("client_id", atlasConfig.getClientId())
                 .build()
                 .encode()
@@ -88,6 +87,26 @@ public class BoardGameAtlasClient {
                 System.out.println("More than one topic meets search criteria:");
 
             return response.getPosts();
+        } catch (Exception e) {
+            System.out.println(e);
+            return Collections.emptyList();
+        }
+    }
+
+    public List<AtlasForumPostDto> getForumTopics(String topic) {
+        URI url = UriComponentsBuilder.fromHttpUrl(atlasConfig.getApiEndpoint() + "/forum")
+                .queryParam("client_id", atlasConfig.getClientId())
+                .build()
+                .encode()
+                .toUri();
+        System.out.println(url);
+
+        try {
+            AtlasForumPostListDto response = restTemplate.getForObject(url, AtlasForumPostListDto.class);
+            if (response.getPosts().size() > 0)
+                System.out.println("More than one topic meets search criteria:");
+
+            return response.getPosts().stream().filter(atlasForumPostDto -> atlasForumPostDto.getTitle().contains(topic)).collect(Collectors.toList());
         } catch (Exception e) {
             System.out.println(e);
             return Collections.emptyList();
