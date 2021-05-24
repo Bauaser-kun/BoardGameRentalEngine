@@ -1,6 +1,6 @@
-package com.repository;
+package com.database;
 
-import com.domain.RentedGame;
+import com.domain.Order;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,16 +10,16 @@ import java.util.Optional;
 
 @Transactional
 @Repository
-public interface RentedGameRepository extends CrudRepository<RentedGame, Long> {
+public interface OrderRepository extends CrudRepository<Order, Long> {
     @Override
-    List<RentedGame> findAll();
+    List<Order> findAll();
 
     @Override
-    RentedGame save(RentedGame rentedGame);
+    Order save(Order order);
 
     @Override
-    Optional<RentedGame> findById(Long gameId);
+    Optional<Order> findById(Long orderId);
 
     @Override
-    void deleteById(Long gameId);
+    void deleteById(Long orderId);
 }

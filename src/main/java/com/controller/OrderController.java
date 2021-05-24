@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.controller.exceptions.NoCopiesAvailableException;
 import com.controller.exceptions.OrderNotFoundException;
 import com.controller.exceptions.RentNotFoundException;
 import com.domain.Order;
@@ -34,13 +35,13 @@ public class OrderController {
     }
 
     @PutMapping(value = "updateOrder")
-    public OrderDto updateOrder(@RequestBody OrderDto orderDto) {
+    public OrderDto updateOrder(@RequestBody OrderDto orderDto) throws NoCopiesAvailableException {
         Order savedOrder = dbService.saveOrder(mapper.mapToOrder(orderDto));
         return mapper.mapToOrderDto(savedOrder);
     }
 
     @PostMapping(value = "createOrder")
-    public void createOrder(@RequestBody OrderDto orderDto) {
+    public void createOrder(@RequestBody OrderDto orderDto) throws NoCopiesAvailableException {
         dbService.saveOrder(mapper.mapToOrder(orderDto));
     }
 

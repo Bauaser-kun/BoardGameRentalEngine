@@ -27,4 +27,9 @@ public class Order {
 
     @Column(name = "game_rented_till")
     private LocalDate rentedTill;
+
+    public Order(User user, List<BoardGame> games) {
+        this.user = user;
+        this.games = games;
+    }
 }

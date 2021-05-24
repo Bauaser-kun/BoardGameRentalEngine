@@ -1,4 +1,4 @@
-package com.repository;
+package com.database;
 
 import com.domain.User;
 import org.springframework.data.repository.CrudRepository;

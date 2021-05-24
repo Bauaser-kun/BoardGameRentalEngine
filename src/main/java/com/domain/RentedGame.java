@@ -13,10 +13,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class RentedGame {
     @Id
-    @GeneratedValue
     private Long id;
 
     @ManyToOne
+    @MapsId
     private BoardGame game;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -27,4 +27,8 @@ public class RentedGame {
 
     @Column(name = "ReturnDate")
     private LocalDate returnDate;
+
+    public RentedGame(BoardGame game) {
+        this.game = game;
+    }
 }

@@ -1,7 +1,7 @@
 package com.service;
 
 import com.domain.User;
-import com.repository.UserRepository;
+import com.database.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.controller.exceptions.NoCopiesAvailableException;
 import com.controller.exceptions.RentNotFoundException;
 import com.domain.RentedGame;
 import com.domain.dto.RentedGameDto;
@@ -31,14 +32,18 @@ public class RentedGameController {
     }
 
     @PutMapping(value = "updateRent")
-    public RentedGameDto updateRentedGame(@RequestBody RentedGameDto rentedGameDto) {
+    public RentedGameDto updateRentedGame(@RequestBody RentedGameDto rentedGameDto) throws NoCopiesAvailableException {
         RentedGame savedGame = dbService.saveRentedGame(mapper.mapToRentedGame(rentedGameDto));
         return mapper.mapToRentedGameDto(savedGame);
     }
 
     @PostMapping(value = "createRent")
-    public void createRentedGame(@RequestBody RentedGameDto rentedGameDto) {
-        dbService.saveRentedGame(mapper.mapToRentedGame(rentedGameDto));
+    public void createRentedGame(@RequestBody RentedGameDto rentedGameDto) throws NoCopiesAvailableException {
+           try {
+               dbService.saveRentedGame(mapper.mapToRentedGame(rentedGameDto));
+           } catch (NoCopiesAvailableException e) {
+               throw e;
+           }
     }
 
     @DeleteMapping(value = "deleteRent")

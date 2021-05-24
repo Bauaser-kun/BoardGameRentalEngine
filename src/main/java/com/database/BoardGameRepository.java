@@ -1,4 +1,4 @@
-package com.repository;
+package com.database;
 
 import com.domain.BoardGame;
 import org.springframework.data.repository.CrudRepository;

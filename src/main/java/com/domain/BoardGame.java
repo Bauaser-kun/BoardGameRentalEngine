@@ -35,7 +35,8 @@ public class BoardGame {
     @ManyToOne(cascade = CascadeType.ALL)
     private Order order;
 
-    public BoardGame(String title, double price, int copies) {
+
+    public BoardGame(String title, Float price, int copies) {
         this.title = title;
         this.price = price;
         this.copies = copies;
