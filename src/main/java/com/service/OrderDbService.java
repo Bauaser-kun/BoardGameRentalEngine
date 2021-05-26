@@ -1,9 +1,9 @@
 package com.service;
 
 import com.controller.exceptions.NoCopiesAvailableException;
+import com.database.OrderRepository;
 import com.domain.BoardGame;
 import com.domain.Order;
-import com.database.OrderRepository;
 import com.domain.RentedGame;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

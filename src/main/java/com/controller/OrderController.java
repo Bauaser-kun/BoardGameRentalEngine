@@ -2,11 +2,8 @@ package com.controller;
 
 import com.controller.exceptions.NoCopiesAvailableException;
 import com.controller.exceptions.OrderNotFoundException;
-import com.controller.exceptions.RentNotFoundException;
 import com.domain.Order;
-import com.domain.RentedGame;
 import com.domain.dto.OrderDto;
-import com.domain.dto.RentedGameDto;
 import com.mapper.OrderMapper;
 import com.service.OrderDbService;
 import org.springframework.beans.factory.annotation.Autowired;

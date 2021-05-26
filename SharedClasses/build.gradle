@@ -1,7 +1,7 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.4.5'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
 }
 
 group 'org.example'
@@ -9,32 +9,22 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
-    maven { url "https://maven.vaadin.com/vaadin-addons" }
 }
 
 dependencies {
-    compile project(':SharedClasses')
-    implementation project(':SharedClasses')
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 
-    implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
-    implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
-    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
-    testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '3.5.15'
-
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
     testCompileOnly 'org.projectlombok:lombok:1.18.20'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
-
-    runtimeOnly 'mysql:mysql-connector-java'
-
 }
 
 bootJar {

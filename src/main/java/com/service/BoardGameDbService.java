@@ -1,7 +1,7 @@
 package com.service;
 
-import com.domain.BoardGame;
 import com.database.BoardGameRepository;
+import com.domain.BoardGame;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
