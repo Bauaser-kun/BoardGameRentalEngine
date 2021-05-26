@@ -13,8 +13,8 @@ repositories {
 }
 
 dependencies {
-    compile project(':SharedClasses')
-    implementation project(':SharedClasses')
+    compile project(':Dto')
+    implementation project(':Dto')
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'

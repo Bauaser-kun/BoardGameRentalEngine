@@ -2,5 +2,5 @@ rootProject.name = "BoardGameRentalEngine"
 include 'main'
 include 'src'
 include 'Frontend'
-include 'SharedClasses'
+include 'Dto'
 
