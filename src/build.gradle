@@ -15,6 +15,8 @@ repositories {
 dependencies {
     compile project(':SharedClasses')
     implementation project(':SharedClasses')
+    compile project(':Frontend')
+    implementation project(':Frontend')
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -33,8 +35,9 @@ dependencies {
     testCompileOnly 'org.projectlombok:lombok:1.18.20'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
 
-    runtimeOnly 'mysql:mysql-connector-java'
+    implementation 'com.vaadin:vaadin-spring-boot-starter'
 
+    runtimeOnly 'mysql:mysql-connector-java'
 }
 
 bootJar {
@@ -43,6 +46,12 @@ bootJar {
 
 jar {
     enabled = true
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "com.vaadin:vaadin-bom:14.4.2"
+    }
 }
 
 test {

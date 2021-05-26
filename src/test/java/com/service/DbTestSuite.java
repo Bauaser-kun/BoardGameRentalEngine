@@ -1,6 +1,6 @@
 package com.service;
 
-import com.controller.exceptions.NoCopiesAvailableException;
+import com.exceptions.NoCopiesAvailableException;
 import com.domain.BoardGame;
 import com.domain.Order;
 import com.domain.RentedGame;

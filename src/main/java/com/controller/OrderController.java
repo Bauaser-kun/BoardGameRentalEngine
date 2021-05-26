@@ -1,7 +1,7 @@
 package com.controller;
 
-import com.controller.exceptions.NoCopiesAvailableException;
-import com.controller.exceptions.OrderNotFoundException;
+import com.exceptions.NoCopiesAvailableException;
+import com.exceptions.OrderNotFoundException;
 import com.domain.Order;
 import com.domain.dto.OrderDto;
 import com.mapper.OrderMapper;

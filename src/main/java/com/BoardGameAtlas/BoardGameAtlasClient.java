@@ -1,7 +1,7 @@
 package com.BoardGameAtlas;
 
 import com.BoardGameAtlas.config.AtlasConfig;
-import com.controller.exceptions.GameNotFoundException;
+import com.exceptions.GameNotFoundException;
 import com.domain.dto.AtlasForumPostDto;
 import com.domain.dto.AtlasForumPostListDto;
 import com.domain.dto.AtlasGameDto;

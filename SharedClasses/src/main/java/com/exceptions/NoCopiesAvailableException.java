@@ -1,4 +1,4 @@
-package com.controller.exceptions;
+package com.exceptions;
 
 public class NoCopiesAvailableException extends Exception {
 }

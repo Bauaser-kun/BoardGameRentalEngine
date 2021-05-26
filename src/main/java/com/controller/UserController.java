@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.controller.exceptions.UserNotFoundException;
+import com.exceptions.UserNotFoundException;
 import com.domain.User;
 import com.domain.dto.UserDto;
 import com.mapper.UserMapper;

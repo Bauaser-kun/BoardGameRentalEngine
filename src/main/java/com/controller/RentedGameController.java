@@ -1,7 +1,7 @@
 package com.controller;
 
-import com.controller.exceptions.NoCopiesAvailableException;
-import com.controller.exceptions.RentNotFoundException;
+import com.exceptions.NoCopiesAvailableException;
+import com.exceptions.RentNotFoundException;
 import com.domain.RentedGame;
 import com.domain.dto.RentedGameDto;
 import com.mapper.RentedGamesMapper;

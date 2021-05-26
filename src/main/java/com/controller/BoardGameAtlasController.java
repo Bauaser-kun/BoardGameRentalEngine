@@ -1,7 +1,7 @@
 package com.controller;
 
 import com.BoardGameAtlas.BoardGameAtlasClient;
-import com.controller.exceptions.GameNotFoundException;
+import com.exceptions.GameNotFoundException;
 import com.domain.dto.AtlasForumPostDto;
 import com.domain.dto.AtlasGameDto;
 import lombok.RequiredArgsConstructor;

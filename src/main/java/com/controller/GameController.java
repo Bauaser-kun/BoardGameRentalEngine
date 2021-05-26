@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.controller.exceptions.GameNotFoundException;
+import com.exceptions.GameNotFoundException;
 import com.domain.BoardGame;
 import com.domain.dto.BoardGameDto;
 import com.mapper.BoardGameMapper;
