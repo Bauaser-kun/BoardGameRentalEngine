@@ -14,9 +14,10 @@ import java.util.List;
 @AllArgsConstructor
 public class Order {
     @Id
+    @GeneratedValue
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     private User user;
 
     @OneToMany(mappedBy = "order")

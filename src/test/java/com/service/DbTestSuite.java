@@ -1,27 +1,24 @@
-package com.database;
+package com.service;
 
-import com.controller.exceptions.GameNotFoundException;
 import com.controller.exceptions.NoCopiesAvailableException;
 import com.domain.BoardGame;
 import com.domain.Order;
 import com.domain.RentedGame;
 import com.domain.User;
-import com.domain.dto.OrderDto;
-import com.service.BoardGameDbService;
-import com.service.OrderDbService;
-import com.service.RentedGameDbService;
-import com.service.UserDbService;
 import lombok.SneakyThrows;
-import org.aspectj.weaver.ast.Or;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@RunWith(SpringRunner.class)
 @SpringBootTest
 public class DbTestSuite {
     @Autowired
@@ -72,8 +69,10 @@ public class DbTestSuite {
     @Test
     void shouldCreateOrder(){
         //Given
-        User user = new User();
+        User user = new User("username", "name", "surname", "level", "email", LocalDate.of(2021, 01, 01));
+        userDbService.saveUser(user);
         BoardGame boardGame = new BoardGame("game test", 15.5, 5);
+        boardGameDbService.saveGame(boardGame);
         Order order = new Order(user, List.of(boardGame));
 
         //When
@@ -83,5 +82,11 @@ public class DbTestSuite {
         Long id = order.getId();
         Optional<Order> readOrder = orderDbService.getOrder(id);
         assertTrue(readOrder.isPresent());
+
+        //Cleanup
+        orderDbService.deleteOrder(id);
+        rentedGameDbService.deleteRentedGame(boardGame.getId());
+        boardGameDbService.deleteGame(boardGame.getTitle());
+        userDbService.deleteUser(user.getId());
     }
 }

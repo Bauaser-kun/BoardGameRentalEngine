@@ -19,7 +19,7 @@ public class RentedGame {
     @MapsId
     private BoardGame game;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private User user;
 
     @Column(name = "Rented_on")
