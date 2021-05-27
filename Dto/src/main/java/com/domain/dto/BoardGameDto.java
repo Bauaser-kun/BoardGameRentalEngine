@@ -1,7 +1,5 @@
 package com.domain.dto;
 
-import com.domain.Order;
-import com.domain.RentedGame;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
@@ -23,7 +21,7 @@ public class BoardGameDto {
     @JsonIgnore
     private int copies;
     @JsonIgnore
-    private List<RentedGame> rentedGames;
+    private List<RentedGameDto> rentedGames;
     @JsonIgnore
-    private Order order;
+    private OrderDto order;
 }

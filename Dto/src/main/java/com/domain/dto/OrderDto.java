@@ -1,7 +1,5 @@
 package com.domain.dto;
 
-import com.domain.BoardGame;
-import com.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,8 +12,8 @@ import java.util.List;
 @NoArgsConstructor
 public class OrderDto {
     private Long id;
-    private User user;
-    private List<BoardGame> games;
+    private UserDto user;
+    private List<BoardGameDto> games;
     private LocalDate createdOn;
     private LocalDate rentedTill;
 }
