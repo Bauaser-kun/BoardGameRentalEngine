@@ -21,7 +21,7 @@ public class BoardGame {
     private String title;
 
     @Column(name = "Type")
-    private String type;
+    private MechanicType type;
 
     @Column(name = "Price", nullable = false)
     private double price;

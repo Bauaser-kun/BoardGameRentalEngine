@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -35,6 +36,13 @@ public class BoardGameDbService {
 
     public Optional<BoardGame> getGame(final Long gameId){
         return repository.findById(gameId);
+    }
+
+    public List<BoardGame> getGamesWithMechanic(final String mechanic) {
+        return repository.findAll()
+                .stream()
+                .filter(game -> game.getType().toString().equals(mechanic))
+                .collect(Collectors.toList());
     }
 
     public BoardGame saveGame(BoardGame boardGame) {

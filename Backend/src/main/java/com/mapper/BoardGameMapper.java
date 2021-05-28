@@ -1,6 +1,7 @@
 package com.mapper;
 
 import com.domain.BoardGame;
+import com.domain.MechanicType;
 import com.domain.dto.BoardGameDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,13 +18,13 @@ public class BoardGameMapper {
     private OrderMapper orderMapper;
 
     public BoardGame mapToGame(BoardGameDto boardGameDto) {
-        return new BoardGame(boardGameDto.getId(), boardGameDto.getTitle(), boardGameDto.getType(),
+        return new BoardGame(boardGameDto.getId(), boardGameDto.getTitle(), Enum.valueOf(MechanicType.class, boardGameDto.getType()),
                 boardGameDto.getPrice(), boardGameDto.getCopies(), gamesMapper.mapToRentedGameList(boardGameDto.getRentedGames()),
                 orderMapper.mapToOrder(boardGameDto.getOrder()));
     }
 
     public BoardGameDto mapToGameDto(BoardGame boardGame){
-        return new BoardGameDto(boardGame.getId(), boardGame.getTitle(), boardGame.getType(),
+        return new BoardGameDto(boardGame.getId(), boardGame.getTitle(), boardGame.getType().toString(),
                 boardGame.getPrice(), boardGame.getCopies(), gamesMapper.mapToRentedGameDtoList(boardGame.getRentedGames()),
                 orderMapper.mapToOrderDto(boardGame.getOrder()));
     }
