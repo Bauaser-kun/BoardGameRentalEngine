@@ -11,13 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class MainView extends VerticalLayout {
     private Grid<BoardGame> grid = new Grid<>(BoardGame.class);
 
+
     @Autowired
     private BoardGameDbService dbService;
 
     public MainView(BoardGameDbService dbService){
         this.dbService = dbService;
 
-        grid.setColumns("id","copies", "price", "title", "type", "order_id");
+        grid.setColumns("id","copies", "price", "title", "type", "order");
 
         add(grid);
         updateGrid();
