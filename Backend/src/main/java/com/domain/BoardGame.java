@@ -41,4 +41,11 @@ public class BoardGame {
         this.price = price;
         this.copies = copies;
     }
+
+    public BoardGame(String title, MechanicType type, double price, int copies) {
+        this.title = title;
+        this.type = type;
+        this.price = price;
+        this.copies = copies;
+    }
 }

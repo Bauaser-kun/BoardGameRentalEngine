@@ -1,9 +1,6 @@
 package com.service;
 
-import com.domain.BoardGame;
-import com.domain.Order;
-import com.domain.RentedGame;
-import com.domain.User;
+import com.domain.*;
 import com.exceptions.NoCopiesAvailableException;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
@@ -33,6 +30,17 @@ public class DbTestSuite {
 
     @Autowired
     OrderDbService orderDbService;
+
+    @Test
+    void populateDatabaseWithSampleData() {
+        boardGameDbService.saveGame(new BoardGame("Gloomhaven", MechanicType.COOP, 45, 2));
+        boardGameDbService.saveGame(new BoardGame("Gloomhaven edycja Polska", MechanicType.COOP, 45, 6));
+        boardGameDbService.saveGame(new BoardGame("ogródek", MechanicType.PUZZLE, 10.5, 10));
+        boardGameDbService.saveGame(new BoardGame("Ankh-Morpork", MechanicType.CARD, 15.75,5));
+        boardGameDbService.saveGame(new BoardGame("Munchkin", MechanicType.CARD, 5, 25));
+        boardGameDbService.saveGame(new BoardGame("Munchkin Gloomie", MechanicType.CARD, 6.50, 10));
+        boardGameDbService.saveGame(new BoardGame("Valhalla", MechanicType.DICE, 9.99, 6));
+    }
 
     @Test
     void shouldSaveGame(){

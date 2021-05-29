@@ -1,7 +1,12 @@
 package com.domain;
 
 public enum MechanicType {
-    CARD ("Card game"), DICE ("Dice throwing"), TERITORY ("Teritory Control"), SINGLEPLAY ("Single player only");
+    CARD ("Card game"),
+    DICE ("Dice throwing"),
+    TERITORY ("Teritory Control"),
+    COOP ("Cooperation"),
+    PUZZLE ("Puzzle Solving"),
+    SINGLEPLAY ("Single player only");
 
     private String value;
 

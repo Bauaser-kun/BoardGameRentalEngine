@@ -41,7 +41,14 @@ public class BoardGameDbService {
     public List<BoardGame> getGamesWithMechanic(final String mechanic) {
         return repository.findAll()
                 .stream()
-                .filter(game -> game.getType().toString().equals(mechanic))
+                .filter(game -> game.getType().toString().toLowerCase().contains(mechanic.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+
+    public List<BoardGame> getGamesWithTitle(final String title) {
+        return repository.findAll()
+                .stream()
+                .filter(game -> game.getTitle().toLowerCase().contains(title.toLowerCase()))
                 .collect(Collectors.toList());
     }
 
