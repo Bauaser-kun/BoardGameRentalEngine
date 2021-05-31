@@ -15,8 +15,8 @@ public class MainView extends VerticalLayout {
     private Grid<BoardGame> grid = new Grid<>(BoardGame.class);
     private ViewElements elements = new ViewElements();
 
-    TextField typeFilter = elements.createSearchField("Find game by mechanics");
-    TextField titleFilter = elements.createSearchField("Find game");
+    TextField typeFilter = elements.createFilterField("Find game by mechanics");
+    TextField titleFilter = elements.createFilterField("Find game");
     Button atlasButton = elements.createMoveButton("Atlas");
 
     @Autowired
@@ -28,7 +28,7 @@ public class MainView extends VerticalLayout {
         grid.setColumns("id","copies", "price", "title", "type");
         typeFilter.addValueChangeListener(event -> updateGridWithMechanicSearch());
         titleFilter.addValueChangeListener(event -> updateGridWithTitleSearch());
-        atlasButton.addClickListener(event -> {UI.getCurrent().navigate(AtlasView.class);});
+        atlasButton.addClickListener(event -> UI.getCurrent().navigate(AtlasView.class));
 
         add(grid, typeFilter, titleFilter, atlasButton);
         refreshGrid();

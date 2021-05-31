@@ -4,6 +4,7 @@ import com.BoardGameAtlas.BoardGameAtlasClient;
 import com.domain.dto.AtlasForumPostDto;
 import com.domain.dto.AtlasGameDto;
 import com.exceptions.GameNotFoundException;
+import com.exceptions.NoRelatedTopicException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,7 +47,7 @@ public class BoardGameAtlasController {
     }
 
     @GetMapping("Topic")
-    public void getTopics(@RequestParam String topic) {
+    public void getTopics(@RequestParam String topic) throws NoRelatedTopicException {
         List<AtlasForumPostDto> posts = boardGameAtlasClient.getForumTopics(topic);
         posts.forEach(post -> System.out.println(post.getTitle() + "\n" + post.getPost_url()));
     }
