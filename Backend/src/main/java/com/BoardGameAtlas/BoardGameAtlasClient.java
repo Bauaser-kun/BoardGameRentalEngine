@@ -43,7 +43,6 @@ public class BoardGameAtlasClient {
 
     public List<AtlasGameDto> getAllGamesFromBoardGameAtlas() {
         URI url = UriComponentsBuilder.fromHttpUrl(atlasConfig.getApiEndpoint() + "/search")
-                .queryParam("fields", "name")
                 .queryParam("client_id", atlasConfig.getClientId())
                 .build()
                 .encode()

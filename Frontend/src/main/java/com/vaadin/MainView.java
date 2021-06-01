@@ -18,7 +18,7 @@ public class MainView extends VerticalLayout {
 
     TextField typeFilter = elements.createFilterField("Find game by mechanics");
     TextField titleFilter = elements.createFilterField("Find game");
-    Button atlasButton = elements.createMoveButton("Atlas");
+    Button atlasButton = elements.createButton("Atlas");
 
     @Autowired
     private BoardGameDbService dbService;

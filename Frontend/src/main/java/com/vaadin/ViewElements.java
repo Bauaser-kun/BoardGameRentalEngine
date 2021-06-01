@@ -23,7 +23,7 @@ public class ViewElements {
         return textField;
     }
 
-    public Button createMoveButton(String placeholder) {
+    public Button createButton(String placeholder) {
         Button button = new Button();
         button.setText(placeholder);
 
