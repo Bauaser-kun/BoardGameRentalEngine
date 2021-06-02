@@ -9,7 +9,7 @@ import java.net.URI;
 @NoArgsConstructor
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AtlasForumPostDto {
+public class AtlasForumTopicDto {
     private String title;
     private URI post_url;
 }

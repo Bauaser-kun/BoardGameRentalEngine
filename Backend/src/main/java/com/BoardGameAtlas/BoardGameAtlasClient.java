@@ -1,8 +1,8 @@
 package com.BoardGameAtlas;
 
 import com.BoardGameAtlas.config.AtlasConfig;
-import com.domain.dto.AtlasForumPostDto;
-import com.domain.dto.AtlasForumPostListDto;
+import com.domain.dto.AtlasForumTopicDto;
+import com.domain.dto.AtlasForumTopicListDto;
 import com.domain.dto.AtlasGameDto;
 import com.domain.dto.AtlasGameListDTO;
 import com.exceptions.GameNotFoundException;
@@ -83,7 +83,7 @@ public class BoardGameAtlasClient {
         }
     }
 
-    public List<AtlasForumPostDto> getAllForumTopics() {
+    public List<AtlasForumTopicDto> getAllForumTopics() {
         URI url = UriComponentsBuilder.fromHttpUrl(atlasConfig.getApiEndpoint() + "/forum")
                 .queryParam("client_id", atlasConfig.getClientId())
                 .build()
@@ -92,7 +92,7 @@ public class BoardGameAtlasClient {
         System.out.println(url);
 
         try {
-            AtlasForumPostListDto response = restTemplate.getForObject(url, AtlasForumPostListDto.class);
+            AtlasForumTopicListDto response = restTemplate.getForObject(url, AtlasForumTopicListDto.class);
             if (response.getPosts().size() > 1)
                 System.out.println("More than one topic meets search criteria:");
 
@@ -103,7 +103,7 @@ public class BoardGameAtlasClient {
         }
     }
 
-    public List<AtlasForumPostDto> getForumTopics(String topic) throws NoRelatedTopicException{
+    public List<AtlasForumTopicDto> getForumTopics(String topic) throws NoRelatedTopicException{
         URI url = UriComponentsBuilder.fromHttpUrl(atlasConfig.getApiEndpoint() + "/forum")
                 .queryParam("client_id", atlasConfig.getClientId())
                 .build()
@@ -112,11 +112,11 @@ public class BoardGameAtlasClient {
         System.out.println(url);
 
         try {
-            AtlasForumPostListDto response = restTemplate.getForObject(url, AtlasForumPostListDto.class);
+            AtlasForumTopicListDto response = restTemplate.getForObject(url, AtlasForumTopicListDto.class);
             if (response.getPosts().size() > 1)
                 System.out.println("More than one topic meets search criteria:");
 
-            List<AtlasForumPostDto> returnList = response.getPosts().stream()
+            List<AtlasForumTopicDto> returnList = response.getPosts().stream()
                     .filter(game -> game.getTitle().toLowerCase().contains(topic.toLowerCase()))
                     .collect(Collectors.toList());
             if (returnList.size() > 0) {

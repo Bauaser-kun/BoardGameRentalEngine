@@ -1,7 +1,7 @@
 package com.controller;
 
 import com.BoardGameAtlas.BoardGameAtlasClient;
-import com.domain.dto.AtlasForumPostDto;
+import com.domain.dto.AtlasForumTopicDto;
 import com.domain.dto.AtlasGameDto;
 import com.exceptions.GameNotFoundException;
 import com.exceptions.NoRelatedTopicException;
@@ -42,13 +42,13 @@ public class BoardGameAtlasController {
 
     @GetMapping("Forum")
     public void getAllTopics() {
-        List<AtlasForumPostDto> posts = boardGameAtlasClient.getAllForumTopics();
+        List<AtlasForumTopicDto> posts = boardGameAtlasClient.getAllForumTopics();
         posts.forEach(post -> System.out.println(post.getTitle() + "\n" + post.getPost_url()));
     }
 
     @GetMapping("Topic")
     public void getTopics(@RequestParam String topic) throws NoRelatedTopicException {
-        List<AtlasForumPostDto> posts = boardGameAtlasClient.getForumTopics(topic);
+        List<AtlasForumTopicDto> posts = boardGameAtlasClient.getForumTopics(topic);
         posts.forEach(post -> System.out.println(post.getTitle() + "\n" + post.getPost_url()));
     }
 }
