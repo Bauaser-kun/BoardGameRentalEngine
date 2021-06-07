@@ -17,14 +17,14 @@ public class UserMapper {
     private OrderMapper orderMapper;
 
     public User mapToUser(UserDto userDto) {
-        return new User(userDto.getId(), userDto.getUsername(), userDto.getName(), userDto.getSurname(),
+        return new User(userDto.getId(), userDto.getUsername(), userDto.getPassword(), userDto.getName(), userDto.getSurname(),
                 userDto.getUserLevel(), userDto.getEmail(), userDto.getRegisteredOn(), gamesMapper.mapToRentedGameList(userDto.getRentedGames()),
-                orderMapper.mapToOrderList(userDto.getOrders()));
+                orderMapper.mapToOrderList(userDto.getOrders()), userDto.isLogged());
     }
 
     public UserDto mapToUserDto(User user) {
-        return new UserDto(user.getId(), user.getUsername(), user.getName(), user.getSurname(),
-                user.getUserLevel(), user.getEmail(), user.getRegisteredOn(), gamesMapper.mapToRentedGameDtoList(user.getRentedGames()),
+        return new UserDto(user.getId(), user.getUsername(), user.getPassword(), user.getName(), user.getSurname(),
+                user.getUserLevel(), user.getEmail(), user.getRegisteredOn(), user.isLogged(), gamesMapper.mapToRentedGameDtoList(user.getRentedGames()),
                 orderMapper.mapToOrderDtoList(user.getOrders()));
     }
 

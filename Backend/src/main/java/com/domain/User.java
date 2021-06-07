@@ -21,6 +21,9 @@ public class User {
     @Column(name = "username", nullable = false)
     private String username;
 
+    @Column(name = "password", nullable = false)
+    private String password;
+
     @Column(name = "name", nullable = false)
     private String name;
 
@@ -41,6 +44,9 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Order> orders;
+
+    @Column(name = "status", nullable = false)
+    private boolean isLogged;
 
     public User(String username, String name, String surname, String userLevel, String email, LocalDate registeredOn) {
         this.username = username;
