@@ -1,8 +1,8 @@
 package com.controller;
 
-import com.domain.Status;
 import com.domain.User;
 import com.domain.dto.UserDto;
+import com.exceptions.UserAlreadyExistException;
 import com.exceptions.UserNotFoundException;
 import com.mapper.UserMapper;
 import com.service.UserDbService;
@@ -38,54 +38,31 @@ public class UserController {
     }
 
     @PostMapping(value = "register")
-    public Status registerUser(@RequestBody UserDto userDto) {
-        List<UserDto> users = mapper.mapToUserDtoList(dbService.getUsers());
-
-        for (UserDto user : users) {
-            if (user.getUsername() == userDto.getUsername()) {
-                return Status.USER_ALREADY_EXISTS;
-            }
+    public void registerUser(@RequestBody UserDto userDto) throws UserAlreadyExistException {
+        try {
+            dbService.saveUser(mapper.mapToUser(userDto));
+        } catch (Exception e) {
+            System.out.println(e);
+            throw new UserAlreadyExistException();
         }
-
-        dbService.saveUser(mapper.mapToUser(userDto));
-        return Status.SUCCESS;
     }
 
     @PostMapping(value = "login")
-    public Status loginUser(@RequestBody UserDto userDto) {
-        List<UserDto> users = mapper.mapToUserDtoList(dbService.getUsers());
-
-        for (UserDto user : users) {
-            if (user.getUsername() == userDto.getUsername()) {
-                user.setLogged(true);
-                dbService.saveUser(mapper.mapToUser(user));
-                return Status.SUCCESS;
-            }
-        }
-
-        return Status.FAILURE;
+    public void loginUser(@RequestBody UserDto userDto) {
+        User user = dbService.getUser(userDto.getUsername());
+        user.setLogged(true);
     }
 
     @PostMapping(value = "logout")
-    public Status logoutUser(@RequestBody UserDto userDto) {
-        List<UserDto> users = mapper.mapToUserDtoList(dbService.getUsers());
-
-        for (UserDto user : users) {
-            if (user.getUsername() == userDto.getUsername()) {
-                user.setLogged(false);
-                dbService.saveUser(mapper.mapToUser(user));
-                return Status.SUCCESS;
-            }
-        }
-
-        return Status.FAILURE;
+    public void logoutUser(@RequestBody UserDto userDto) {
+        User user = dbService.getUser(userDto.getUsername());
+        user.setLogged(false);
     }
 
     @DeleteMapping(value = "delete")
-    public Status deleteUser(@RequestParam Long userId) throws UserNotFoundException{
+    public void deleteUser(@RequestParam Long userId) throws UserNotFoundException{
        try {
            dbService.deleteUser(userId);
-           return Status.SUCCESS;
        } catch (IllegalArgumentException e) {
            throw new UserNotFoundException();
        }

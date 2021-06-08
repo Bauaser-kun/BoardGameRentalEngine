@@ -24,7 +24,7 @@ public class UserMapper {
 
     public UserDto mapToUserDto(User user) {
         return new UserDto(user.getId(), user.getUsername(), user.getPassword(), user.getName(), user.getSurname(),
-                user.getUserLevel(), user.getEmail(), user.getRegisteredOn(), user.isLogged(), gamesMapper.mapToRentedGameDtoList(user.getRentedGames()),
+                user.getUserLevel(), user.getEmail(), user.getRegisteredOn(), user.isLogged(), gamesMapper.mapToRentedGameDtoList(user.getRents()),
                 orderMapper.mapToOrderDtoList(user.getOrders()));
     }
 

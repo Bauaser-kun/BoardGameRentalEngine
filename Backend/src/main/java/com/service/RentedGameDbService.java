@@ -2,17 +2,19 @@ package com.service;
 
 import com.database.RentedGameRepository;
 import com.domain.BoardGame;
-import com.domain.RentedGame;
+import com.domain.Rent;
 import com.exceptions.NoCopiesAvailableException;
 import com.service.processor.Processor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class RentedGameDbService {
     @Autowired
@@ -24,19 +26,19 @@ public class RentedGameDbService {
     @Autowired
     private Processor processor;
 
-    public List<RentedGame> getAllRentedGames(){
+    public List<Rent> getAllRentedGames(){
         return repository.findAll();
     }
 
-    public Optional<RentedGame> getRentedGame(final Long gameId) {
+    public Optional<Rent> getRentedGame(final Long gameId) {
         return repository.findById(gameId);
     }
 
-    public RentedGame saveRentedGame(RentedGame rentedGame) throws NoCopiesAvailableException {
-        BoardGame gameToRent = boardGameDbService.getGame(rentedGame.getGame().getTitle()).get();
+    public Rent saveRentedGame(Rent rent) throws NoCopiesAvailableException {
+        BoardGame gameToRent = boardGameDbService.getGame(rent.getGame().getTitle()).get();
         if (gameToRent.getCopies() > 0) {
             boardGameDbService.saveGame(processor.decreaseAvailableCopies(gameToRent));
-            return repository.save(rentedGame);
+            return repository.save(rent);
         } else {
             throw new NoCopiesAvailableException();
         }

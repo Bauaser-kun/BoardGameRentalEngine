@@ -19,6 +19,7 @@ public class MainView extends VerticalLayout {
     TextField typeFilter = elements.createFilterField("Find game by mechanics");
     TextField titleFilter = elements.createFilterField("Find game");
     Button atlasButton = elements.createButton("Atlas");
+    Button loginButton = elements.createButton("Log in");
 
     @Autowired
     private BoardGameDbService dbService;
@@ -27,12 +28,15 @@ public class MainView extends VerticalLayout {
         this.dbService = dbService;
 
         grid.setColumns("id","copies", "price", "title", "type");
+
         typeFilter.addValueChangeListener(event -> updateGridWithMechanicSearch());
         titleFilter.addValueChangeListener(event -> updateGridWithTitleSearch());
-        atlasButton.addClickListener(event -> UI.getCurrent().navigate(AtlasView.class));
         HorizontalLayout filters = new HorizontalLayout(titleFilter, typeFilter);
 
-        add(grid, filters, atlasButton);
+        atlasButton.addClickListener(event -> UI.getCurrent().navigate(AtlasView.class));
+        loginButton.addClickListener(event -> UI.getCurrent().navigate(LoginView.class));
+
+        add(loginButton, grid, filters, atlasButton);
         refreshGrid();
     }
 

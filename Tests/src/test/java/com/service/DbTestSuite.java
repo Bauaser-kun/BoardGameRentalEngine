@@ -69,7 +69,7 @@ public class DbTestSuite {
 
         //When & Then
         assertThrows(NoCopiesAvailableException.class, ()->
-                rentedGameDbService.saveRentedGame(new RentedGame(boardGameDbService.getGame(title).get())));
+                rentedGameDbService.saveRentedGame(new Rent(boardGameDbService.getGame(title).get())));
 
         //CleanUp
         boardGameDbService.deleteGame(game.getTitle());

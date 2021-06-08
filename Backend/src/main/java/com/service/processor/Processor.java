@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 public class Processor {
     public BoardGame decreaseAvailableCopies(BoardGame boardGame){
         return new BoardGame(boardGame.getId(), boardGame.getTitle(), boardGame.getType(), boardGame.getPrice(),
-                boardGame.getCopies() - 1, boardGame.getRentedGames(), boardGame.getOrder());
+                boardGame.getCopies() - 1, boardGame.getRents(), boardGame.getOrder());
     }
 
     public BoardGame increaseAvailableCopies(BoardGame boardGame) {
         return new BoardGame(boardGame.getId(), boardGame.getTitle(), boardGame.getType(), boardGame.getPrice(),
-                boardGame.getCopies() + 1, boardGame.getRentedGames(), boardGame.getOrder());
+                boardGame.getCopies() + 1, boardGame.getRents(), boardGame.getOrder());
     }
 }

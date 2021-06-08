@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RentedGameDto {
+public class RentDto {
     private Long id;
     private BoardGameDto game;
     private UserDto user;

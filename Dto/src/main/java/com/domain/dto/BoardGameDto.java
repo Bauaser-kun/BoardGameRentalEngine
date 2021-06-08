@@ -21,7 +21,7 @@ public class BoardGameDto {
     @JsonIgnore
     private int copies;
     @JsonIgnore
-    private List<RentedGameDto> rentedGames;
+    private List<RentDto> rentedGames;
     @JsonIgnore
     private OrderDto order;
 }

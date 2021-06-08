@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Entity(name = "Rented")
 @NoArgsConstructor
 @AllArgsConstructor
-public class RentedGame {
+public class Rent {
     @Id
     private Long id;
 
@@ -28,7 +28,7 @@ public class RentedGame {
     @Column(name = "ReturnDate")
     private LocalDate returnDate;
 
-    public RentedGame(BoardGame game) {
+    public Rent(BoardGame game) {
         this.game = game;
     }
 }

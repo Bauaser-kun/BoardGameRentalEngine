@@ -30,7 +30,7 @@ public class BoardGame {
     private int copies;
 
     @OneToMany(mappedBy = "game")
-    private List<RentedGame> rentedGames;
+    private List<Rent> rents;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Order order;

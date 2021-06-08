@@ -25,7 +25,7 @@ public class BoardGameMapper {
 
     public BoardGameDto mapToGameDto(BoardGame boardGame){
         return new BoardGameDto(boardGame.getId(), boardGame.getTitle(), boardGame.getType().toString(),
-                boardGame.getPrice(), boardGame.getCopies(), gamesMapper.mapToRentedGameDtoList(boardGame.getRentedGames()),
+                boardGame.getPrice(), boardGame.getCopies(), gamesMapper.mapToRentedGameDtoList(boardGame.getRents()),
                 orderMapper.mapToOrderDto(boardGame.getOrder()));
     }
 
