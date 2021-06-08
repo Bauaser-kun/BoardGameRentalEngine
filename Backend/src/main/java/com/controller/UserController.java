@@ -66,7 +66,7 @@ public class UserController {
         return Status.FAILURE;
     }
 
-    @PostMapping(value = "login")
+    @PostMapping(value = "logout")
     public Status logoutUser(@RequestBody UserDto userDto) {
         List<UserDto> users = mapper.mapToUserDtoList(dbService.getUsers());
 

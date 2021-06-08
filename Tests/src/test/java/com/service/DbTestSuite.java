@@ -1,5 +1,6 @@
 package com.service;
 
+import com.GameBoardRentalEngineApplication;
 import com.domain.*;
 import com.exceptions.NoCopiesAvailableException;
 import lombok.SneakyThrows;
@@ -17,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = GameBoardRentalEngineApplication.class)
 public class DbTestSuite {
     @Autowired
     BoardGameDbService boardGameDbService;
@@ -78,7 +79,7 @@ public class DbTestSuite {
     @Test
     void shouldCreateOrder(){
         //Given
-        User user = new User("username", "name", "surname", "level", "email", LocalDate.of(2021, 01, 01));
+        User user = new User("username", "password", "name", "surname", "level", "email", LocalDate.of(2021, 01, 01));
         userDbService.saveUser(user);
         BoardGame boardGame = new BoardGame("game test", 15.5, 5);
         boardGameDbService.saveGame(boardGame);

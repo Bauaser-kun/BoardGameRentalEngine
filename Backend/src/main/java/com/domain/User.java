@@ -48,8 +48,9 @@ public class User {
     @Column(name = "status", nullable = false)
     private boolean isLogged;
 
-    public User(String username, String name, String surname, String userLevel, String email, LocalDate registeredOn) {
+    public User(String username, String password, String name, String surname, String userLevel, String email, LocalDate registeredOn) {
         this.username = username;
+        this.password = password;
         this.name = name;
         this.surname = surname;
         this.userLevel = userLevel;
