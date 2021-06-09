@@ -22,6 +22,5 @@ public class UserDto {
     private String email;
     private LocalDate registeredOn;
     private boolean isLogged;
-    private List<RentDto> rentedGames;
     private List<OrderDto> orders;
 }

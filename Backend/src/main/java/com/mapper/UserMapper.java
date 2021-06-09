@@ -18,13 +18,13 @@ public class UserMapper {
 
     public User mapToUser(UserDto userDto) {
         return new User(userDto.getId(), userDto.getUsername(), userDto.getPassword(), userDto.getName(), userDto.getSurname(),
-                userDto.getUserLevel(), userDto.getEmail(), userDto.getRegisteredOn(), gamesMapper.mapToRentedGameList(userDto.getRentedGames()),
+                userDto.getUserLevel(), userDto.getEmail(), userDto.getRegisteredOn(),
                 orderMapper.mapToOrderList(userDto.getOrders()), userDto.isLogged());
     }
 
     public UserDto mapToUserDto(User user) {
         return new UserDto(user.getId(), user.getUsername(), user.getPassword(), user.getName(), user.getSurname(),
-                user.getUserLevel(), user.getEmail(), user.getRegisteredOn(), user.isLogged(), gamesMapper.mapToRentedGameDtoList(user.getRents()),
+                user.getUserLevel(), user.getEmail(), user.getRegisteredOn(), user.isLogged(),
                 orderMapper.mapToOrderDtoList(user.getOrders()));
     }
 

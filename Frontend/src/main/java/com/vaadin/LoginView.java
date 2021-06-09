@@ -33,6 +33,7 @@ public class LoginView extends Composite<VerticalLayout> {
     public LoginView() {
         getContent().add(layout);
         register.addClickListener(event -> UI.getCurrent().navigate(RegisterView.class));
+        back.addClickListener(event -> UI.getCurrent().navigate(MainView.class));
         login.addLoginListener(event -> loginUser(event.getUsername(), event.getPassword()));
 
         layout.add(
@@ -43,6 +44,7 @@ public class LoginView extends Composite<VerticalLayout> {
     private void loginUser(String username, String password) {
         if (verifyPassword(password, username))
         controller.loginUser(mapper.mapToUserDto(dbService.getUser(username)));
+        UI.getCurrent().navigate(MainView.class);
     }
 
     private boolean verifyPassword(String password, String username) {

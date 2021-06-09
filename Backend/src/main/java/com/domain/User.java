@@ -39,9 +39,6 @@ public class User {
     @Column(name = "registered_on", nullable = false)
     private LocalDate registeredOn;
 
-    @OneToMany(mappedBy = "user")
-    private List<Rent> rents;
-
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
     private List<Order> orders;
 

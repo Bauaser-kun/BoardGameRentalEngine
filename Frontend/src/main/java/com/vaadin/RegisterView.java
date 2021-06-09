@@ -23,6 +23,10 @@ public class RegisterView extends Composite {
     @Autowired
     private UserController controller;
 
+    private ViewElements elements = new ViewElements();
+
+    Button back = elements.createButton("Back");
+
     @Override
     protected Component initContent() {
         TextField username = new TextField("Username");
@@ -31,6 +35,7 @@ public class RegisterView extends Composite {
         TextField name = new TextField("Name");
         TextField surname = new TextField("Surname");
         TextField email = new TextField("E-mail");
+        back.addClickListener(event -> UI.getCurrent().navigate(MainView.class));
 
         return new VerticalLayout(
                 new H2("Register"),
@@ -58,7 +63,7 @@ public class RegisterView extends Composite {
 
         UserDto newUser = new UserDto(1L, username, password1, name, surname,
                 "new player", email, LocalDate.now(),
-                false, new ArrayList<>(), new ArrayList<>());
+                false, new ArrayList<>());
 
         if (username.isEmpty() || password1.isEmpty() || password2.isEmpty()
         || name.isEmpty() || surname.isEmpty() || email.isEmpty()) {

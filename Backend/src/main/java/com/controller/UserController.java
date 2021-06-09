@@ -51,12 +51,14 @@ public class UserController {
     public void loginUser(@RequestBody UserDto userDto) {
         User user = dbService.getUser(userDto.getUsername());
         user.setLogged(true);
+        dbService.saveUser(user);
     }
 
     @PostMapping(value = "logout")
     public void logoutUser(@RequestBody UserDto userDto) {
         User user = dbService.getUser(userDto.getUsername());
         user.setLogged(false);
+        dbService.saveUser(user);
     }
 
     @DeleteMapping(value = "delete")
