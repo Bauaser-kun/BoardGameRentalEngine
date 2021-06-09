@@ -1,6 +1,5 @@
 package com.service;
 
-import com.GameBoardRentalEngineApplication;
 import com.domain.*;
 import com.exceptions.NoCopiesAvailableException;
 import lombok.SneakyThrows;
@@ -18,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = GameBoardRentalEngineApplication.class)
+@SpringBootTest
 public class DbTestSuite {
     @Autowired
     BoardGameDbService boardGameDbService;

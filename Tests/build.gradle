@@ -30,6 +30,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 
     testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '3.5.15'
+    testImplementation 'com.google.code.gson:gson'
 
     testCompileOnly 'org.projectlombok:lombok:1.18.20'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
