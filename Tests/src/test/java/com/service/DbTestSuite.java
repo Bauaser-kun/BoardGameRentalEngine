@@ -31,7 +31,7 @@ public class DbTestSuite {
     @Autowired
     OrderDbService orderDbService;
 
-    @Test
+    /*@Test
     void populateDatabaseWithSampleData() {
         boardGameDbService.saveGame(new BoardGame("Gloomhaven", MechanicType.COOP, 45, 2));
         boardGameDbService.saveGame(new BoardGame("Gloomhaven edycja Polska", MechanicType.COOP, 45, 6));
@@ -40,7 +40,7 @@ public class DbTestSuite {
         boardGameDbService.saveGame(new BoardGame("Munchkin", MechanicType.CARD, 5, 25));
         boardGameDbService.saveGame(new BoardGame("Munchkin Gloomie", MechanicType.CARD, 6.50, 10));
         boardGameDbService.saveGame(new BoardGame("Valhalla", MechanicType.DICE, 9.99, 6));
-    }
+    }*/
 
     @Test
     void shouldSaveGame(){
