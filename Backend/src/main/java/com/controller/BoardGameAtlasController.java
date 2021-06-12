@@ -43,14 +43,16 @@ public class BoardGameAtlasController {
     }
 
     @GetMapping("forum")
-    public void getAllTopics() {
+    public List<AtlasForumTopicDto> getAllTopics() {
         List<AtlasForumTopicDto> posts = boardGameAtlasClient.getAllForumTopics();
         posts.forEach(post -> System.out.println(post.getTitle() + "\n" + post.getPost_url()));
+        return posts;
     }
 
     @GetMapping("topic")
-    public void getTopics(@RequestParam String topic) throws NoRelatedTopicException {
+    public List<AtlasForumTopicDto> getTopics(@RequestParam String topic) throws NoRelatedTopicException {
         List<AtlasForumTopicDto> posts = boardGameAtlasClient.getForumTopics(topic);
         posts.forEach(post -> System.out.println(post.getTitle() + "\n" + post.getPost_url()));
+        return posts;
     }
 }

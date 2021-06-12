@@ -93,10 +93,10 @@ public class BoardGameAtlasClient {
 
         try {
             AtlasForumTopicListDto response = restTemplate.getForObject(url, AtlasForumTopicListDto.class);
-            if (response.getPosts().size() > 1)
+            if (response.getTopics().size() > 1)
                 System.out.println("More than one topic meets search criteria:");
 
-            return response.getPosts();
+            return response.getTopics();
         } catch (Exception e) {
             System.out.println(e);
             return Collections.emptyList();
@@ -113,10 +113,10 @@ public class BoardGameAtlasClient {
 
         try {
             AtlasForumTopicListDto response = restTemplate.getForObject(url, AtlasForumTopicListDto.class);
-            if (response.getPosts().size() > 1)
+            if (response.getTopics().size() > 1)
                 System.out.println("More than one topic meets search criteria:");
 
-            List<AtlasForumTopicDto> returnList = response.getPosts().stream()
+            List<AtlasForumTopicDto> returnList = response.getTopics().stream()
                     .filter(game -> game.getTitle().toLowerCase().contains(topic.toLowerCase()))
                     .collect(Collectors.toList());
             if (returnList.size() > 0) {
