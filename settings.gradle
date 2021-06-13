@@ -1,6 +1,4 @@
 rootProject.name = "BoardGameRentalEngine"
-include 'main'
-include 'src'
 include 'Frontend'
 include 'Dto'
 include 'Backend'

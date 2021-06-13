@@ -34,3 +34,5 @@ out/
 .vscode/
 **/out/
 **/build/
+
+node_modules/

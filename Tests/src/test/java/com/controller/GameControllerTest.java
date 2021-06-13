@@ -8,6 +8,7 @@ import com.exceptions.GameNotFoundException;
 import com.google.gson.Gson;
 import com.mapper.BoardGameMapper;
 import com.service.BoardGameDbService;
+import com.service.facade.DatabasesFacade;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,16 +30,13 @@ import static org.mockito.Mockito.when;
 @WebMvcTest(GameController.class)
 class GameControllerTest {
     @Autowired
-    private MockMvc mockMvc;
+    MockMvc mockMvc;
 
     @MockBean
-    private BoardGameMapper mapper;
+    DatabasesFacade facade;
 
     @MockBean
-    private GameController controller;
-
-    @MockBean
-    private BoardGameDbService service;
+    BoardGameDbService service;
 
     @Test
     void shouldGetGames() throws Exception {
@@ -50,8 +48,7 @@ class GameControllerTest {
         new BoardGameDto(5L, "Munchkin", MechanicType.CARD.toString(), 5, 25, new ArrayList<>(), new OrderDto()),
         new BoardGameDto(6L, "Munchkin Gloomie", MechanicType.CARD.toString(), 6.50, 10, new ArrayList<>(), new OrderDto()),
         new BoardGameDto(7L, "Valhalla", MechanicType.DICE.toString(), 9.99, 6, new ArrayList<>(), new OrderDto()));
-
-        when(controller.getGames()).thenReturn(games);
+        when(facade.getAllBoardGames()).thenReturn(games);
 
         //When & Then
         mockMvc
@@ -67,17 +64,20 @@ class GameControllerTest {
     }
 
     @Test
-    void shouldGetGameById() throws Exception, GameNotFoundException {
+    void shouldGetGameById() throws Exception {
         //Given
         BoardGameDto result = new BoardGameDto(1L, "ogródek", "Puzzle Solving", 10.5, 10, new ArrayList<>(), new OrderDto());
-        when(controller.getGame(anyLong(), isNull())).thenReturn(result);
-
+        when(facade.getBoardGame(anyLong())).thenReturn(result);
+        Gson gson = new Gson();
+        String content = gson.toJson(result);
 
         //When & Then
         mockMvc
                 .perform(MockMvcRequestBuilders
                         .get("/V1/Games/getGame?gameId=1")
-                        .contentType(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("UTF-8")
+                        .content(content))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.title", Matchers.is("ogródek")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.type", Matchers.is("Puzzle Solving")))
@@ -85,20 +85,16 @@ class GameControllerTest {
     }
 
     @Test
-    void shouldGetGameByTitle() throws Exception, GameNotFoundException {
+    void shouldGetGameByTitle() throws Exception {
         //Given
         BoardGameDto result = new BoardGameDto(1L, "ogródek", "Puzzle Solving", 10.5, 10, new ArrayList<>(), new OrderDto());
-        when(controller.getGame(isNull(), anyString())).thenReturn(result);
-        Gson gson = new Gson();
-        String content = gson.toJson(result);
-
+        when(facade.getBoardGame(anyString())).thenReturn(result);
 
         //When & Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .get("/V1/Games/getGame?title=test")
-                        .content(content)
-                        .characterEncoding("UTF-8")
+                        .get("/V1/Games/getGame")
+                        .param("title", "test")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.title", Matchers.is("ogródek")))
@@ -129,7 +125,7 @@ class GameControllerTest {
     void updateGame() throws Exception {
         //Given
         BoardGameDto savedGame = new BoardGameDto(1L, "Gloomhaven edycja Polska", "Cooperation", 45, 6, new ArrayList<>(), new OrderDto());
-        when(controller.updateGame((any(BoardGameDto.class)))).thenReturn(savedGame);
+        when(facade.updateGame((any(BoardGameDto.class)))).thenReturn(savedGame);
         Gson gson = new Gson();
         String content = gson.toJson(savedGame);
 

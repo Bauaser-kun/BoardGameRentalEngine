@@ -5,7 +5,9 @@ import com.domain.dto.BoardGameDto;
 import com.exceptions.GameNotFoundException;
 import com.mapper.BoardGameMapper;
 import com.service.BoardGameDbService;
+import com.service.facade.DatabasesFacade;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,39 +17,35 @@ import java.util.List;
 @RequestMapping("/V1/Games/")
 public class GameController {
     @Autowired
-    BoardGameMapper mapper;
-
-    @Autowired
-    BoardGameDbService dbService;
+    DatabasesFacade facade;
 
     @GetMapping(value = "getGames")
     public List<BoardGameDto> getGames(){
-        return mapper.mapToGameDtoList(dbService.getAllGames());
+        return facade.getAllBoardGames();
     }
 
     @GetMapping(value = "getGame")
     public BoardGameDto getGame(@RequestParam(required = false) Long gameId, @RequestParam(required = false) String title) throws GameNotFoundException {
         if (gameId == null) {
-            return mapper.mapToGameDto(dbService.getGame(gameId).orElseThrow(GameNotFoundException::new));
+            return facade.getBoardGame(gameId);
         } else {
-            return mapper.mapToGameDto(dbService.getGame(title).orElseThrow(GameNotFoundException::new));
+            return facade.getBoardGame(title);
         }
     }
 
     @PostMapping(value = "createGame")
     public void createGame(@RequestBody BoardGameDto boardGameDto) {
-        dbService.saveGame(mapper.mapToGame(boardGameDto));
+        facade.createGame(boardGameDto);
     }
 
     @DeleteMapping(value = "deleteGame")
     public void deleteGame(@RequestParam(required = false) Long gameId, @RequestParam(required = false) String title) throws GameNotFoundException {
         try {
             if (gameId == null) {
-                dbService.deleteGame(title);
+                facade.deleteGame(title);
             } else {
-                dbService.deleteGame(gameId);
+                facade.deleteGame(gameId);
             }
-
         } catch (IllegalArgumentException e) {
             throw new GameNotFoundException();
         }
@@ -55,7 +53,6 @@ public class GameController {
 
     @PutMapping(value = "updateGame")
     public BoardGameDto updateGame(@RequestBody BoardGameDto boardGameDto) {
-        BoardGame savedGame = dbService.saveGame(mapper.mapToGame(boardGameDto));
-        return mapper.mapToGameDto(savedGame);
+        return facade.updateGame(boardGameDto);
     }
 }

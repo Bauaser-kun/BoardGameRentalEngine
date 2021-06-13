@@ -26,8 +26,8 @@ public class OrderController {
         return mapper.mapToOrderDtoList(dbService.getAllOrders());
     }
 
-    @GetMapping(value = "getOrder")
-    public OrderDto getRentedGame(@RequestParam Long orderId) throws OrderNotFoundException {
+    @GetMapping(value = "Order")
+    public OrderDto getOrder(@RequestParam Long orderId) throws OrderNotFoundException {
         return mapper.mapToOrderDto(dbService.getOrder(orderId).orElseThrow(OrderNotFoundException::new));
     }
 
