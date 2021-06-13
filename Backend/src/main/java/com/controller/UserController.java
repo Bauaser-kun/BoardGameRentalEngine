@@ -15,11 +15,6 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RequestMapping("/V1/User")
 public class UserController {
-    @Autowired
-    UserMapper mapper;
-
-    @Autowired
-    UserDbService dbService;
 
     @Autowired
     DatabasesFacade facade;

@@ -4,6 +4,7 @@ import com.domain.BoardGame;
 import com.domain.MechanicType;
 import com.domain.dto.BoardGameDto;
 import com.domain.dto.OrderDto;
+import com.exceptions.GameNotFoundException;
 import com.google.gson.Gson;
 import com.service.facade.DatabasesFacade;
 import org.hamcrest.Matchers;
@@ -21,8 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringJUnitWebConfig
 @WebMvcTest(GameController.class)
@@ -136,7 +136,7 @@ class GameControllerTest {
     }
 
     @Test
-    void shouldDeleteGame() throws Exception {
+    void shouldDeleteGameById() throws Exception {
         //Given
         doNothing().when(facade).deleteGame(anyLong());
 
@@ -144,6 +144,19 @@ class GameControllerTest {
         mockMvc
                 .perform(MockMvcRequestBuilders
                         .delete("/V1/Games/deleteGame?gameId=1")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    void shouldDeleteGameByTitle() throws Exception {
+        //Given
+        doNothing().when(facade).deleteGame(anyString());
+
+        //When & Then
+        mockMvc
+                .perform(MockMvcRequestBuilders
+                        .delete("/V1/Games/deleteGame?title=BoardGame")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
