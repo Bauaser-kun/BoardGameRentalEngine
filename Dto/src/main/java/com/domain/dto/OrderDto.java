@@ -16,4 +16,10 @@ public class OrderDto {
     private List<BoardGameDto> games;
     private LocalDate createdOn;
     private LocalDate rentedTill;
+
+    public OrderDto(Long id, UserDto user, List<BoardGameDto> games) {
+        this.id = id;
+        this.user = user;
+        this.games = games;
+    }
 }

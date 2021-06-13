@@ -23,4 +23,16 @@ public class UserDto {
     private LocalDate registeredOn;
     private boolean isLogged;
     private List<OrderDto> orders;
+
+    public UserDto(Long id, String username, String password, String name, String surname, String userLevel, String email, boolean isLogged, List<OrderDto> orders) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.userLevel = userLevel;
+        this.email = email;
+        this.isLogged = isLogged;
+        this.orders = orders;
+    }
 }

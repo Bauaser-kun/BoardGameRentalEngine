@@ -15,4 +15,10 @@ public class RentDto {
     private UserDto user;
     private LocalDate rentedOn;
     private LocalDate returnDate;
+
+    public RentDto(Long id, BoardGameDto game, UserDto user) {
+        this.id = id;
+        this.game = game;
+        this.user = user;
+    }
 }

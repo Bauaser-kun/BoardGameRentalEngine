@@ -4,10 +4,7 @@ import com.domain.BoardGame;
 import com.domain.MechanicType;
 import com.domain.dto.BoardGameDto;
 import com.domain.dto.OrderDto;
-import com.exceptions.GameNotFoundException;
 import com.google.gson.Gson;
-import com.mapper.BoardGameMapper;
-import com.service.BoardGameDbService;
 import com.service.facade.DatabasesFacade;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
@@ -24,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 @SpringJUnitWebConfig
@@ -34,9 +32,6 @@ class GameControllerTest {
 
     @MockBean
     DatabasesFacade facade;
-
-    @MockBean
-    BoardGameDbService service;
 
     @Test
     void shouldGetGames() throws Exception {
@@ -103,11 +98,11 @@ class GameControllerTest {
     }
 
     @Test
-    void createGame() throws Exception {
+    void shouldCreateGame() throws Exception {
         //Given
         BoardGameDto newGame = new BoardGameDto();
         BoardGame savedGame = new BoardGame();
-        when(service.saveGame((any()))).thenReturn(savedGame);
+        doNothing().when(facade).createGame(newGame);
         Gson gson = new Gson();
         String content = gson.toJson(savedGame);
 
@@ -122,7 +117,7 @@ class GameControllerTest {
     }
 
     @Test
-    void updateGame() throws Exception {
+    void shouldUpdateGame() throws Exception {
         //Given
         BoardGameDto savedGame = new BoardGameDto(1L, "Gloomhaven edycja Polska", "Cooperation", 45, 6, new ArrayList<>(), new OrderDto());
         when(facade.updateGame((any(BoardGameDto.class)))).thenReturn(savedGame);
@@ -138,5 +133,18 @@ class GameControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.price", Matchers.is(savedGame.getPrice())));
+    }
+
+    @Test
+    void shouldDeleteGame() throws Exception {
+        //Given
+        doNothing().when(facade).deleteGame(anyLong());
+
+        //When & Then
+        mockMvc
+                .perform(MockMvcRequestBuilders
+                        .delete("/V1/Games/deleteGame?gameId=1")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk());
     }
 }

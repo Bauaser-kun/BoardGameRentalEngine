@@ -1,11 +1,8 @@
 package com.controller;
 
-import com.domain.Rent;
 import com.domain.dto.RentDto;
 import com.exceptions.NoCopiesAvailableException;
 import com.exceptions.RentNotFoundException;
-import com.mapper.RentedGamesMapper;
-import com.service.RentedGameDbService;
 import com.service.facade.DatabasesFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +11,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/V1/rentedGames")
+@RequestMapping("/V1/rents")
 public class RentedGameController {
     @Autowired
     DatabasesFacade facade;

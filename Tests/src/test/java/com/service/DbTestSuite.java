@@ -1,6 +1,9 @@
 package com.service;
 
-import com.domain.*;
+import com.domain.BoardGame;
+import com.domain.Order;
+import com.domain.Rent;
+import com.domain.User;
 import com.exceptions.NoCopiesAvailableException;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;

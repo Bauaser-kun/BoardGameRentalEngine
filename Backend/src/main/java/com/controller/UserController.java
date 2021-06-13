@@ -1,6 +1,5 @@
 package com.controller;
 
-import com.domain.User;
 import com.domain.dto.UserDto;
 import com.exceptions.UserAlreadyExistException;
 import com.exceptions.UserNotFoundException;

@@ -1,13 +1,9 @@
 package com.controller;
 
-import com.domain.BoardGame;
 import com.domain.dto.BoardGameDto;
 import com.exceptions.GameNotFoundException;
-import com.mapper.BoardGameMapper;
-import com.service.BoardGameDbService;
 import com.service.facade.DatabasesFacade;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

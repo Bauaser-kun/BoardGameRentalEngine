@@ -1,11 +1,8 @@
 package com.controller;
 
-import com.domain.Order;
 import com.domain.dto.OrderDto;
 import com.exceptions.NoCopiesAvailableException;
 import com.exceptions.OrderNotFoundException;
-import com.mapper.OrderMapper;
-import com.service.OrderDbService;
 import com.service.facade.DatabasesFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +11,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("V1/order")
+@RequestMapping("V1/order/")
 public class OrderController {
     @Autowired
     DatabasesFacade facade;
