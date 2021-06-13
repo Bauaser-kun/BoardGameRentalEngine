@@ -6,6 +6,7 @@ import com.exceptions.UserAlreadyExistException;
 import com.exceptions.UserNotFoundException;
 import com.mapper.UserMapper;
 import com.service.UserDbService;
+import com.service.facade.DatabasesFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,52 +22,41 @@ public class UserController {
     @Autowired
     UserDbService dbService;
 
+    @Autowired
+    DatabasesFacade facade;
+
     @GetMapping(value = "getAll")
     public List<UserDto> getUsers() {
-        return mapper.mapToUserDtoList(dbService.getUsers());
+        return facade.getUsers();
     }
 
     @GetMapping(value = "get")
     public UserDto getUser(@RequestParam Long userId) throws UserNotFoundException {
-        return mapper.mapToUserDto(dbService.getUser(userId).orElseThrow(UserNotFoundException::new));
+        return facade.getUser(userId);
     }
 
     @PutMapping(value = "update")
     public UserDto updateUser(@RequestBody UserDto userDto) {
-        User savedUser = dbService.saveUser(mapper.mapToUser(userDto));
-        return mapper.mapToUserDto(savedUser);
+        return facade.updateUser(userDto);
     }
 
     @PostMapping(value = "register")
     public void registerUser(@RequestBody UserDto userDto) throws UserAlreadyExistException {
-        try {
-            dbService.saveUser(mapper.mapToUser(userDto));
-        } catch (Exception e) {
-            System.out.println(e);
-            throw new UserAlreadyExistException();
-        }
+        facade.registerUser(userDto);
     }
 
     @PostMapping(value = "login")
     public void loginUser(@RequestBody UserDto userDto) {
-        User user = dbService.getUser(userDto.getUsername());
-        user.setLogged(true);
-        dbService.saveUser(user);
+        facade.loginUser(userDto);
     }
 
     @PostMapping(value = "logout")
     public void logoutUser(@RequestBody UserDto userDto) {
-        User user = dbService.getUser(userDto.getUsername());
-        user.setLogged(false);
-        dbService.saveUser(user);
+        facade.logoutUser(userDto);
     }
 
     @DeleteMapping(value = "delete")
     public void deleteUser(@RequestParam Long userId) throws UserNotFoundException{
-       try {
-           dbService.deleteUser(userId);
-       } catch (IllegalArgumentException e) {
-           throw new UserNotFoundException();
-       }
+      facade.deleteUser(userId);
     }
 }

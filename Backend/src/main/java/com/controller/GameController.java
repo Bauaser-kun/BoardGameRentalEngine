@@ -27,9 +27,9 @@ public class GameController {
     @GetMapping(value = "getGame")
     public BoardGameDto getGame(@RequestParam(required = false) Long gameId, @RequestParam(required = false) String title) throws GameNotFoundException {
         if (gameId == null) {
-            return facade.getBoardGame(gameId);
-        } else {
             return facade.getBoardGame(title);
+        } else {
+            return facade.getBoardGame(gameId);
         }
     }
 

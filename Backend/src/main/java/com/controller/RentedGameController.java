@@ -6,6 +6,7 @@ import com.exceptions.NoCopiesAvailableException;
 import com.exceptions.RentNotFoundException;
 import com.mapper.RentedGamesMapper;
 import com.service.RentedGameDbService;
+import com.service.facade.DatabasesFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,42 +17,29 @@ import java.util.List;
 @RequestMapping("/V1/rentedGames")
 public class RentedGameController {
     @Autowired
-    RentedGamesMapper mapper;
-
-    @Autowired
-    RentedGameDbService dbService;
+    DatabasesFacade facade;
 
     @GetMapping(value = "getAllRents")
     public List<RentDto> getAllRentedGames() {
-        return mapper.mapToRentedGameDtoList(dbService.getAllRentedGames());
+        return facade.getAllRentedGames();
     }
 
     @GetMapping(value = "getRent")
     public RentDto getRentedGame(@RequestParam Long gameId) throws RentNotFoundException {
-        return mapper.mapToRentedGameDto(dbService.getRentedGame(gameId).orElseThrow(RentNotFoundException::new));
+        return facade.getRentedGame(gameId);
     }
 
     @PutMapping(value = "updateRent")
     public RentDto updateRentedGame(@RequestBody RentDto rentDto) throws NoCopiesAvailableException {
-        Rent savedGame = dbService.saveRentedGame(mapper.mapToRentedGame(rentDto));
-        return mapper.mapToRentedGameDto(savedGame);
-    }
+        return facade.updateRentedGame(rentDto);}
 
     @PostMapping(value = "createRent")
     public void createRentedGame(@RequestBody RentDto rentDto) throws NoCopiesAvailableException {
-           try {
-               dbService.saveRentedGame(mapper.mapToRentedGame(rentDto));
-           } catch (NoCopiesAvailableException e) {
-               throw e;
-           }
+           facade.createRentedGame(rentDto);
     }
 
     @DeleteMapping(value = "deleteRent")
-    public void deleteUser(@RequestParam Long gameId) throws RentNotFoundException{
-        try {
-            dbService.deleteRentedGame(gameId);
-        } catch (IllegalArgumentException e) {
-            throw new RentNotFoundException();
-        }
+    public void deleteRentedGame(@RequestParam Long gameId) throws RentNotFoundException{
+        facade.deleteRentedGame(gameId);
     }
 }

@@ -6,6 +6,7 @@ import com.exceptions.NoCopiesAvailableException;
 import com.exceptions.OrderNotFoundException;
 import com.mapper.OrderMapper;
 import com.service.OrderDbService;
+import com.service.facade.DatabasesFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,38 +17,30 @@ import java.util.List;
 @RequestMapping("V1/order")
 public class OrderController {
     @Autowired
-    OrderMapper mapper;
-
-    @Autowired
-    OrderDbService dbService;
+    DatabasesFacade facade;
 
     @GetMapping(value = "getAllOrders")
     public List<OrderDto> getAllOrders() {
-        return mapper.mapToOrderDtoList(dbService.getAllOrders());
+        return facade.getAllOrders();
     }
 
     @GetMapping(value = "Order")
     public OrderDto getOrder(@RequestParam Long orderId) throws OrderNotFoundException {
-        return mapper.mapToOrderDto(dbService.getOrder(orderId).orElseThrow(OrderNotFoundException::new));
+        return facade.getOrder(orderId);
     }
 
     @PutMapping(value = "updateOrder")
     public OrderDto updateOrder(@RequestBody OrderDto orderDto) throws NoCopiesAvailableException {
-        Order savedOrder = dbService.saveOrder(mapper.mapToOrder(orderDto));
-        return mapper.mapToOrderDto(savedOrder);
+        return facade.updateOrder(orderDto);
     }
 
     @PostMapping(value = "createOrder")
     public void createOrder(@RequestBody OrderDto orderDto) throws NoCopiesAvailableException {
-        dbService.saveOrder(mapper.mapToOrder(orderDto));
+        facade.createOrder(orderDto);
     }
 
     @DeleteMapping(value = "deleteOrder")
-    public void deleteUser(@RequestParam Long orderId) throws OrderNotFoundException{
-        try {
-            dbService.deleteOrder(orderId);
-        } catch (IllegalArgumentException e) {
-            throw new OrderNotFoundException();
-        }
+    public void deleteOrder(@RequestParam Long orderId) throws OrderNotFoundException{
+        facade.deleteOrder(orderId);
     }
 }
