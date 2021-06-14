@@ -3,7 +3,7 @@ package com.vaadin;
 import com.BoardGameAtlas.BoardGameAtlasClient;
 import com.domain.dto.AtlasGameDto;
 import com.exceptions.GameNotFoundException;
-import com.service.BoardGameDbService;
+import com.service.dbService.BoardGameDbService;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;

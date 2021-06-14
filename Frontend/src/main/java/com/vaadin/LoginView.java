@@ -2,7 +2,7 @@ package com.vaadin;
 
 import com.controller.UserController;
 import com.mapper.UserMapper;
-import com.service.UserDbService;
+import com.service.dbService.UserDbService;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;

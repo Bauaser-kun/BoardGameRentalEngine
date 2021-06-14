@@ -1,19 +1,15 @@
 package com.service;
 
 import com.domain.BoardGame;
-import com.domain.MechanicType;
 import com.domain.Rent;
-import com.domain.dto.RentDto;
 import com.exceptions.NoCopiesAvailableException;
-import com.mapper.RentedGamesMapper;
+import com.service.dbService.BoardGameDbService;
+import com.service.dbService.RentedGameDbService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

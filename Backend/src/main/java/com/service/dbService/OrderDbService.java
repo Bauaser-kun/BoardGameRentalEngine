@@ -1,4 +1,4 @@
-package com.service;
+package com.service.dbService;
 
 import com.database.OrderRepository;
 import com.domain.BoardGame;

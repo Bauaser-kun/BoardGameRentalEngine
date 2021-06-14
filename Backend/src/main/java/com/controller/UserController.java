@@ -3,8 +3,6 @@ package com.controller;
 import com.domain.dto.UserDto;
 import com.exceptions.UserAlreadyExistException;
 import com.exceptions.UserNotFoundException;
-import com.mapper.UserMapper;
-import com.service.UserDbService;
 import com.service.facade.DatabasesFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.service;
+package com.service.dbService;
 
 import com.database.UserRepository;
 import com.domain.User;

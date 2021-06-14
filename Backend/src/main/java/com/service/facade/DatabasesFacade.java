@@ -13,10 +13,10 @@ import com.mapper.BoardGameMapper;
 import com.mapper.OrderMapper;
 import com.mapper.RentedGamesMapper;
 import com.mapper.UserMapper;
-import com.service.BoardGameDbService;
-import com.service.OrderDbService;
-import com.service.RentedGameDbService;
-import com.service.UserDbService;
+import com.service.dbService.BoardGameDbService;
+import com.service.dbService.OrderDbService;
+import com.service.dbService.RentedGameDbService;
+import com.service.dbService.UserDbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

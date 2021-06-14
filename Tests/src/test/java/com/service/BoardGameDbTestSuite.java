@@ -1,28 +1,17 @@
 package com.service;
 
 import com.domain.*;
-import com.domain.dto.BoardGameDto;
-import com.domain.dto.OrderDto;
-import com.domain.dto.RentDto;
-import com.domain.dto.UserDto;
 import com.exceptions.*;
 import com.mapper.BoardGameMapper;
-import com.mapper.OrderMapper;
-import com.mapper.RentedGamesMapper;
-import com.mapper.UserMapper;
-import com.service.facade.DatabasesFacade;
-import lombok.SneakyThrows;
+import com.service.dbService.BoardGameDbService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 

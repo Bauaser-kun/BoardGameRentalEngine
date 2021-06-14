@@ -1,7 +1,7 @@
 package com.vaadin;
 
 import com.domain.BoardGame;
-import com.service.BoardGameDbService;
+import com.service.dbService.BoardGameDbService;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;

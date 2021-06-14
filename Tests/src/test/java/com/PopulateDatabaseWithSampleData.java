@@ -1,19 +1,11 @@
 package com;
 
-import com.domain.BoardGame;
-import com.domain.MechanicType;
-import com.domain.User;
-import com.service.BoardGameDbService;
-import com.service.OrderDbService;
-import com.service.UserDbService;
-import org.junit.jupiter.api.Test;
+import com.service.dbService.BoardGameDbService;
+import com.service.dbService.UserDbService;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -24,7 +16,7 @@ public class PopulateDatabaseWithSampleData {
     @Autowired
     UserDbService userDbService;
 
-    @Test
+   /* @Test
     void populateDatabaseWithSampleData() {
         boardGameDbService.saveGame(new BoardGame("Gloomhaven", MechanicType.COOP, 45, 2));
         boardGameDbService.saveGame(new BoardGame("Gloomhaven edycja Polska", MechanicType.COOP, 45, 6));
@@ -39,5 +31,5 @@ public class PopulateDatabaseWithSampleData {
         userDbService.saveUser(new User(1L, "Ainz", "THISisEvenWorse", "Momonga", "Of Ainz Ool Gown", "Supreme being", "SupremeBeing@GreatTombOfNazarick.com", LocalDate.of(2015,05,5), new ArrayList<>(), false));
         userDbService.saveUser(new User(1L, "Zaryus", "What?", "Zaryus", "Sasha", "lizardman tribes greatest warrior", "LizardmanWarrior@GreatTombOfNazarick.com", LocalDate.of(2015,05,5), new ArrayList<>(), false));
         userDbService.saveUser(new User(1L, "supervisor", "ILOVEAINZ", "Albedo", "Smaragdina", "guardians supervisor", "supervisor@GreatTombOfNazarick.com", LocalDate.of(2015,05,5), new ArrayList<>(), false));
-    }
+    }*/
 }
