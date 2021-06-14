@@ -19,7 +19,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class OrderDbService {
     @Autowired
-    private OrderRepository repository;
+    OrderRepository repository;
 
     @Autowired
     RentedGameDbService dbService;

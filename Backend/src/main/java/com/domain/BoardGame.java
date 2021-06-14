@@ -49,12 +49,4 @@ public class BoardGame {
         this.copies = copies;
     }
 
-    public BoardGame(String title, MechanicType type, double price, int copies, List<Rent> rents, Order order) {
-        this.title = title;
-        this.type = type;
-        this.price = price;
-        this.copies = copies;
-        this.rents = rents;
-        this.order = order;
-    }
 }

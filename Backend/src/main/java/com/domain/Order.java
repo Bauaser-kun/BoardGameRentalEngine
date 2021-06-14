@@ -20,7 +20,7 @@ public class Order {
     @ManyToOne(cascade = CascadeType.MERGE)
     private User user;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
     private List<BoardGame> games;
 
     @Column(name = "order_created")
@@ -32,5 +32,12 @@ public class Order {
     public Order(User user, List<BoardGame> games) {
         this.user = user;
         this.games = games;
+    }
+
+    public Order(User user, List<BoardGame> games, LocalDate createdOn, LocalDate rentedTill) {
+        this.user = user;
+        this.games = games;
+        this.createdOn = createdOn;
+        this.rentedTill = rentedTill;
     }
 }
