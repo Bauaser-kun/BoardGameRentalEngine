@@ -48,5 +48,4 @@ public class BoardGame {
         this.price = price;
         this.copies = copies;
     }
-
 }

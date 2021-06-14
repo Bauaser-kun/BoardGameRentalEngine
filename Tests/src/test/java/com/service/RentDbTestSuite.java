@@ -1,6 +1,8 @@
 package com.service;
 
 import com.domain.BoardGame;
+import com.domain.MechanicType;
+import com.domain.Rent;
 import com.domain.dto.RentDto;
 import com.exceptions.NoCopiesAvailableException;
 import com.mapper.RentedGamesMapper;
@@ -10,6 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @RunWith(SpringRunner.class)
@@ -19,22 +25,21 @@ public class RentDbTestSuite {
     RentedGameDbService service;
 
     @Autowired
-    RentedGamesMapper mapper;
+    BoardGameDbService boardGameService;
 
-    /*@Test
-    void shouldThrowNoCopiesException() {
-        //Given
+    @Test
+    void shouldThrowNoCopiesException() throws NoCopiesAvailableException {
+        //Given & When
         BoardGame game = new BoardGame("game test", 15.5, 0);
+        boardGameService.saveGame(game);
+        Rent rent = new Rent(game);
         String title = game.getTitle();
-
-        //When
-        facade.createGame(boardGameMapper.mapToGameDto(game));
 
         //Then
         assertThrows(NoCopiesAvailableException.class, ()->
-                facade.createRentedGame(new RentDto(boardGameMapper.mapToGameDto(game))));
+                service.saveRentedGame(rent));
 
         //CleanUp
-        facade.deleteGame(game.getTitle());
-    }*/
+        boardGameService.deleteGame(game.getTitle());
+    }
 }

@@ -18,13 +18,13 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class RentedGameDbService {
     @Autowired
-    private RentedGameRepository repository;
+    RentedGameRepository repository;
 
     @Autowired
-    private BoardGameDbService boardGameDbService;
+    BoardGameDbService boardGameDbService;
 
     @Autowired
-    private Processor processor;
+    Processor processor;
 
     public List<Rent> getAllRentedGames(){
         return repository.findAll();
