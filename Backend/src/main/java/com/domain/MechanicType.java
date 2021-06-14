@@ -22,4 +22,13 @@ public enum MechanicType {
     public String toString() {
         return this.getValue();
     }
+
+    public static MechanicType valueOfOrDefault(String myType) {
+        for(MechanicType type : MechanicType.class.getEnumConstants()) {
+            if(type.toString().equals(myType)) {
+                return type;
+            }
+        }
+        throw new IllegalArgumentException("MechanicType not found");
+    }
 }

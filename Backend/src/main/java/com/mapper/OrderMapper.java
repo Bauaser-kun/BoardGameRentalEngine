@@ -11,9 +11,10 @@ import java.util.stream.Collectors;
 @Service
 public class OrderMapper {
     @Autowired
-    private UserMapper userMapper;
+    UserMapper userMapper;
 
-    @Autowired BoardGameMapper gameMapper;
+    @Autowired
+    BoardGameMapper gameMapper;
 
     public Order mapToOrder(OrderDto orderDto) {
         return new Order(orderDto.getId(), userMapper.mapToUser(orderDto.getUser()), gameMapper.mapToGameList(orderDto.getGames()),

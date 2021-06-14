@@ -35,4 +35,14 @@ public class UserDto {
         this.isLogged = isLogged;
         this.orders = orders;
     }
+
+    public UserDto(String username, String password, String name, String surname, String userLevel, String email, LocalDate registeredOn) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.userLevel = userLevel;
+        this.email = email;
+        this.registeredOn = registeredOn;
+    }
 }

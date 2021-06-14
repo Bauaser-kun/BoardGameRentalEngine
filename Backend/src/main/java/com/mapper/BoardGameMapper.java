@@ -18,7 +18,7 @@ public class BoardGameMapper {
     private OrderMapper orderMapper;
 
     public BoardGame mapToGame(BoardGameDto boardGameDto) {
-        return new BoardGame(boardGameDto.getId(), boardGameDto.getTitle(), Enum.valueOf(MechanicType.class, boardGameDto.getType()),
+        return new BoardGame(boardGameDto.getId(), boardGameDto.getTitle(), MechanicType.valueOfOrDefault(boardGameDto.getType()),
                 boardGameDto.getPrice(), boardGameDto.getCopies(), gamesMapper.mapToRentedGameList(boardGameDto.getRentedGames()),
                 orderMapper.mapToOrder(boardGameDto.getOrder()));
     }
