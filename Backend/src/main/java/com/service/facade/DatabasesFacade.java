@@ -146,7 +146,7 @@ public class DatabasesFacade {
 
     public void deleteUser(Long userId) throws UserNotFoundException{
         try {
-            userService.deleteUser(userId);
+            userService.deleteUserById(userId);
         } catch (IllegalArgumentException e) {
             throw new UserNotFoundException();
         }

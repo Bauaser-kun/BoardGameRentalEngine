@@ -18,18 +18,6 @@ public class User {
     @Column(name = "User_ID")
     private long id;
 
-    public User(String username, String password, String name, String surname, String userLevel, String email, LocalDate registeredOn, List<Order> orders, boolean isLogged) {
-        this.username = username;
-        this.password = password;
-        this.name = name;
-        this.surname = surname;
-        this.userLevel = userLevel;
-        this.email = email;
-        this.registeredOn = registeredOn;
-        this.orders = orders;
-        this.isLogged = isLogged;
-    }
-
     @Column(name = "username", nullable = false, unique = true)
     private String username;
 
@@ -65,5 +53,17 @@ public class User {
         this.userLevel = userLevel;
         this.email = email;
         this.registeredOn = registeredOn;
+    }
+
+    public User(String username, String password, String name, String surname, String userLevel, String email, LocalDate registeredOn, List<Order> orders, boolean isLogged) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.userLevel = userLevel;
+        this.email = email;
+        this.registeredOn = registeredOn;
+        this.orders = orders;
+        this.isLogged = isLogged;
     }
 }

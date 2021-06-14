@@ -29,8 +29,12 @@ public class UserDbService {
         return repository.save(user);
     }
 
-    public void deleteUser(Long userId) {
+    public void deleteUserById(Long userId) {
         repository.deleteById(userId);
+    }
+
+    public void deleteUserByUsername(String username) {
+        repository.deleteByUsername(username);
     }
 
     public User getUser(String username) {

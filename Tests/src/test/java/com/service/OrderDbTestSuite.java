@@ -1,13 +1,10 @@
 package com.service;
 
-import com.controller.RentedGameController;
 import com.domain.BoardGame;
 import com.domain.Order;
-import com.domain.Rent;
 import com.domain.User;
 import com.exceptions.NoCopiesAvailableException;
 import com.mapper.OrderMapper;
-import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +57,7 @@ public class OrderDbTestSuite {
         service.deleteOrder(id);
         rentedGameDbService.deleteRentedGame(boardGame.getId());
         boardGameService.deleteGame(boardGame.getTitle());
-        userService.deleteUser(user.getId());
+        userService.deleteUserById(user.getId());
     }
 
     @Test
@@ -88,8 +85,8 @@ public class OrderDbTestSuite {
         service.deleteOrder(order2.getId());
         rentedGameDbService.deleteRentedGame(boardGame.getId());
         boardGameService.deleteGame(boardGame.getTitle());
-        userService.deleteUser(user.getId());
-        userService.deleteUser(user2.getId());
+        userService.deleteUserById(user.getId());
+        userService.deleteUserById(user2.getId());
     }
 
     @Test
@@ -121,7 +118,7 @@ public class OrderDbTestSuite {
         service.deleteOrder(order2.getId());
         rentedGameDbService.deleteRentedGame(boardGame.getId());
         boardGameService.deleteGame(boardGame.getTitle());
-        userService.deleteUser(user.getId());
-        userService.deleteUser(user2.getId());
+        userService.deleteUserById(user.getId());
+        userService.deleteUserById(user2.getId());
     }
 }
