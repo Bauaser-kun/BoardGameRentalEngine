@@ -5,7 +5,6 @@ import com.domain.MechanicType;
 import com.domain.User;
 import com.service.BoardGameDbService;
 import com.service.OrderDbService;
-import com.service.RentedGameDbService;
 import com.service.UserDbService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -25,13 +24,7 @@ public class PopulateDatabaseWithSampleData {
     @Autowired
     UserDbService userDbService;
 
-    @Autowired
-    OrderDbService orderDbService;
-
-    @Autowired
-    RentedGameDbService rentedGameDbService;
-
-    /*@Test
+    @Test
     void populateDatabaseWithSampleData() {
         boardGameDbService.saveGame(new BoardGame("Gloomhaven", MechanicType.COOP, 45, 2));
         boardGameDbService.saveGame(new BoardGame("Gloomhaven edycja Polska", MechanicType.COOP, 45, 6));
@@ -41,11 +34,10 @@ public class PopulateDatabaseWithSampleData {
         boardGameDbService.saveGame(new BoardGame("Munchkin Gloomie", MechanicType.CARD, 6.50, 10));
         boardGameDbService.saveGame(new BoardGame("Valhalla", MechanicType.DICE, 9.99, 6));
 
-        userDbService.saveUser(new User("Vampire", "AINZSAMAFOREVER", "Shaltear", "Bloodfallen", "guardian", "Floor1-3guardian@GreatTombOfNazarick.com", LocalDate.of(2015,05,5), new ArrayList<>(), false));
-        userDbService.saveUser(new User("Momonga", "WhatShouldIDo", "Satoru", "Suzuki", "guild leader", "Momonga@GreatTombOfNazarick.com", LocalDate.of(2015,05,5) , new ArrayList<>(), false));
-        userDbService.saveUser(new User("Ainz", "THISisEvenWorse", "Momonga", "Of Ainz Ool Gown", "Supreme being", "SupremeBeing@GreatTombOfNazarick.com", LocalDate.of(2015,05,5), new ArrayList<>(), false));
-        userDbService.saveUser(new User("Zaryus", "What?", "Zaryus", "Sasha", "lizardman tribes greatest warrior", "LizardmanWarrior@GreatTombOfNazarick.com", LocalDate.of(2015,05,5), new ArrayList<>(), false));
-        userDbService.saveUser(new User("supervisor", "ILOVEAINZ", "Albedo", "Smaragdina", "guardians supervisor", "supervisor@GreatTombOfNazarick.com", LocalDate.of(2015,05,5), new ArrayList<>(), false));
-
-    }*/
+        userDbService.saveUser(new User(1L, "Vampire", "AINZSAMAFOREVER", "Shaltear", "Bloodfallen", "guardian", "Floor1-3guardian@GreatTombOfNazarick.com", LocalDate.of(2015,05,5), new ArrayList<>(), false));
+        userDbService.saveUser(new User(1L, "Momonga", "WhatShouldIDo", "Satoru", "Suzuki", "guild leader", "Momonga@GreatTombOfNazarick.com", LocalDate.of(2015,05,5) , new ArrayList<>(), false));
+        userDbService.saveUser(new User(1L, "Ainz", "THISisEvenWorse", "Momonga", "Of Ainz Ool Gown", "Supreme being", "SupremeBeing@GreatTombOfNazarick.com", LocalDate.of(2015,05,5), new ArrayList<>(), false));
+        userDbService.saveUser(new User(1L, "Zaryus", "What?", "Zaryus", "Sasha", "lizardman tribes greatest warrior", "LizardmanWarrior@GreatTombOfNazarick.com", LocalDate.of(2015,05,5), new ArrayList<>(), false));
+        userDbService.saveUser(new User(1L, "supervisor", "ILOVEAINZ", "Albedo", "Smaragdina", "guardians supervisor", "supervisor@GreatTombOfNazarick.com", LocalDate.of(2015,05,5), new ArrayList<>(), false));
+    }
 }

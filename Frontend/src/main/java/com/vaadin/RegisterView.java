@@ -38,6 +38,7 @@ public class RegisterView extends Composite {
         back.addClickListener(event -> UI.getCurrent().navigate(MainView.class));
 
         return new VerticalLayout(
+                back,
                 new H2("Register"),
                 username,
                 password,
@@ -54,7 +55,8 @@ public class RegisterView extends Composite {
                                 surname.getValue(),
                                 email.getValue()
                         );
-                })
+                }),
+                back
         );
     }
 
