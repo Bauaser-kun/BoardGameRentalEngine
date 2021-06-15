@@ -12,5 +12,5 @@ import java.util.List;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AtlasForumTopicListDto {
-    private List<AtlasForumTopicDto> topics;
+    private List<AtlasForumTopicDto> posts;
 }
