@@ -55,7 +55,7 @@ public class AtlasView extends VerticalLayout {
 
     private void searchJSON() {
         if (!searchField.isEmpty())
-            getUI().get().getPage().open("V1/atlas/Game?title=" + searchField.getValue());
+            getUI().get().getPage().open("V1/atlas/game?title=" + searchField.getValue());
     }
 
     private void showKickstarters() {

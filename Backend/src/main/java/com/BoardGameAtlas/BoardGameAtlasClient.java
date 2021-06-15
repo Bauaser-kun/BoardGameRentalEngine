@@ -65,6 +65,8 @@ public class BoardGameAtlasClient {
                 .encode()
                 .toUri();
 
+        System.out.println(url);
+
         try {
             AtlasGameListDTO responseList = restTemplate.getForObject(url, AtlasGameListDTO.class);
             if (responseList.getGames().size() > 1)
