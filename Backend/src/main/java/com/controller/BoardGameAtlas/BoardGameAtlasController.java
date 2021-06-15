@@ -1,4 +1,4 @@
-package com.controller;
+package com.controller.BoardGameAtlas;
 
 import com.BoardGameAtlas.BoardGameAtlasClient;
 import com.domain.dto.AtlasForumTopicDto;

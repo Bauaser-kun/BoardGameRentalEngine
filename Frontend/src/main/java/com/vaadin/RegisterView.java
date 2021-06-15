@@ -1,6 +1,6 @@
 package com.vaadin;
 
-import com.controller.UserController;
+import com.controller.domainControllers.UserController;
 import com.domain.dto.UserDto;
 import com.exceptions.UserAlreadyExistException;
 import com.vaadin.flow.component.Component;

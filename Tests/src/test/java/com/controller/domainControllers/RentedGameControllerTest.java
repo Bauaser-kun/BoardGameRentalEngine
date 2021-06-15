@@ -1,4 +1,4 @@
-package com.controller;
+package com.controller.domainControllers;
 
 import com.domain.dto.BoardGameDto;
 import com.domain.dto.OrderDto;

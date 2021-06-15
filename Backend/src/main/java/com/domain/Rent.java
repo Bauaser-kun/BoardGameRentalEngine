@@ -31,11 +31,4 @@ public class Rent {
     public Rent(BoardGame game) {
         this.game = game;
     }
-
-    public Rent(BoardGame game, User user, LocalDate rentedOn, LocalDate returnDate) {
-        this.game = game;
-        this.user = user;
-        this.rentedOn = rentedOn;
-        this.returnDate = returnDate;
-    }
 }

@@ -1,6 +1,6 @@
 package com.vaadin;
 
-import com.controller.UserController;
+import com.controller.domainControllers.UserController;
 import com.mapper.UserMapper;
 import com.service.dbService.UserDbService;
 import com.vaadin.flow.component.Composite;

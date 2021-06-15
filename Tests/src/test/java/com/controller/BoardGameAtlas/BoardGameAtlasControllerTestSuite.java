@@ -1,4 +1,4 @@
-package com.controller;
+package com.controller.BoardGameAtlas;
 
 import com.BoardGameAtlas.BoardGameAtlasClient;
 import com.domain.dto.AtlasForumTopicDto;
@@ -25,20 +25,20 @@ import static org.mockito.Mockito.when;
 
 @SpringJUnitWebConfig
 @WebMvcTest(BoardGameAtlasController.class)
-public class AtlasControllerTestSuite {
+public class BoardGameAtlasControllerTestSuite {
     @Autowired
-    private MockMvc mockMvc;
+    MockMvc mockMvc;
 
     @Autowired
-    private BoardGameAtlasController controller;
+    BoardGameAtlasController controller;
 
     @MockBean
-    private BoardGameAtlasClient client;
+    BoardGameAtlasClient client;
 
     @Test
     void shouldFetchEmptyList() throws Exception {
         //Given
-        when(controller.getAllGamesFromAtlas()).thenReturn(List.of());
+        when(client.getAllGamesFromBoardGameAtlas()).thenReturn(List.of());
 
         //When & Then
         mockMvc
@@ -70,7 +70,7 @@ public class AtlasControllerTestSuite {
         AtlasGameDto atlasGameDto = new AtlasGameDto("id", "name", "description", "testURL");
         Gson gson = new Gson();
         String content = gson.toJson(atlasGameDto);
-        when(controller.getGame(anyString())).thenReturn(Collections.singletonList(atlasGameDto));
+        when(client.getGame(anyString())).thenReturn(Collections.singletonList(atlasGameDto));
 
         //When & Then
         mockMvc
@@ -89,7 +89,7 @@ public class AtlasControllerTestSuite {
     @Test
     void shouldFetchAllForumTopics() throws Exception {
         //Given
-        when(controller.getAllTopics()).thenReturn(List.of());
+        when(client.getAllForumTopics()).thenReturn(List.of());
 
         //When & Then
         mockMvc
@@ -106,7 +106,7 @@ public class AtlasControllerTestSuite {
         AtlasForumTopicDto topicDto = new AtlasForumTopicDto("test title", new URI("testUrl.com"));
         Gson gson = new Gson();
         String content = gson.toJson(topicDto);
-        when(controller.getTopics(anyString())).thenReturn(List.of(topicDto));
+        when(client.getForumTopics(anyString())).thenReturn(List.of(topicDto));
 
         //When & Then
         mockMvc

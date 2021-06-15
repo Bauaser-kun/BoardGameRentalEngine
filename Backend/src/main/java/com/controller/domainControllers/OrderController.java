@@ -1,4 +1,4 @@
-package com.controller;
+package com.controller.domainControllers;
 
 import com.domain.dto.OrderDto;
 import com.exceptions.NoCopiesAvailableException;

@@ -10,7 +10,7 @@ The tests also are all created in one module.
 There is also commented PopulateDatabaseWithSampleData class in module tests which is used to fill database with some data 
 to make possible frontend checks. IT SHOULD NEVER BE RUNNED WITH OTHER TESTS! 
 
-To run this app you should run the main method in **GameBoardRentalApplication** class that is in **Module Frontend**
+To run this app you should run the main method in **GameBoardRentalApplication** class which is in **Module Frontend**
 
 This project was turned in the state from commit: https://github.com/Bauaser-kun/BoardGameRentalEngine/commit/c215d36583bb2ae263ab72d1bfa7a43e7e6b8aec
 

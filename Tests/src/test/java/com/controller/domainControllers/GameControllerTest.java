@@ -1,4 +1,4 @@
-package com.controller;
+package com.controller.domainControllers;
 
 import com.domain.BoardGame;
 import com.domain.MechanicType;

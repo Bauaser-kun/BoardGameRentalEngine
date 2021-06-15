@@ -1,4 +1,4 @@
-package com.controller;
+package com.controller.domainControllers;
 
 import com.domain.dto.RentDto;
 import com.exceptions.NoCopiesAvailableException;
