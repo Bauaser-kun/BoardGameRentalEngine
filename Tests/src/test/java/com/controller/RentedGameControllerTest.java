@@ -4,7 +4,6 @@ import com.domain.dto.BoardGameDto;
 import com.domain.dto.OrderDto;
 import com.domain.dto.RentDto;
 import com.domain.dto.UserDto;
-import com.exceptions.RentNotFoundException;
 import com.google.gson.Gson;
 import com.service.facade.DatabasesFacade;
 import org.hamcrest.Matchers;

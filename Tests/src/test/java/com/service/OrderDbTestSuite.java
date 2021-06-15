@@ -4,7 +4,6 @@ import com.domain.BoardGame;
 import com.domain.Order;
 import com.domain.User;
 import com.exceptions.NoCopiesAvailableException;
-import com.mapper.OrderMapper;
 import com.service.dbService.BoardGameDbService;
 import com.service.dbService.OrderDbService;
 import com.service.dbService.RentedGameDbService;
@@ -27,9 +26,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class OrderDbTestSuite {
     @Autowired
     OrderDbService service;
-
-    @Autowired
-    OrderMapper mapper;
 
     @Autowired
     UserDbService userService;

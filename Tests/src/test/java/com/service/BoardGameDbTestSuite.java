@@ -1,7 +1,8 @@
 package com.service;
 
-import com.domain.*;
-import com.exceptions.*;
+import com.domain.BoardGame;
+import com.domain.MechanicType;
+import com.exceptions.GameNotFoundException;
 import com.mapper.BoardGameMapper;
 import com.service.dbService.BoardGameDbService;
 import org.junit.jupiter.api.Test;
@@ -13,7 +14,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

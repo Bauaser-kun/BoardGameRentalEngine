@@ -1,7 +1,6 @@
 package com.service;
 
 import com.domain.User;
-import com.mapper.UserMapper;
 import com.service.dbService.UserDbService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,16 +12,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserDbTestSuite {
     @Autowired
     UserDbService service;
-
-    @Autowired
-    UserMapper mapper;
 
     @Test
     void shouldGetAllUsers() {

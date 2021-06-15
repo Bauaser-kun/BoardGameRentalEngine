@@ -4,7 +4,6 @@ import com.domain.BoardGame;
 import com.domain.MechanicType;
 import com.domain.dto.BoardGameDto;
 import com.domain.dto.OrderDto;
-import com.exceptions.GameNotFoundException;
 import com.google.gson.Gson;
 import com.service.facade.DatabasesFacade;
 import org.hamcrest.Matchers;
@@ -22,7 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
 
 @SpringJUnitWebConfig
 @WebMvcTest(GameController.class)

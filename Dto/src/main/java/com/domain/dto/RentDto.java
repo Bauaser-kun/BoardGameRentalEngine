@@ -21,8 +21,4 @@ public class RentDto {
         this.game = game;
         this.user = user;
     }
-
-    public RentDto(BoardGameDto game) {
-        this.game = game;
-    }
 }
