@@ -3,7 +3,7 @@
 This is the final project from Kodilla JAVA developer plus bootcamp - a REST API for renting boardGames.
 Of course I don't realy have Boardgames to rent ;P
 
-This project was turned in the state from commit: https://github.com/Bauaser-kun/BoardGameRentalEngine/commit/c215d36583bb2ae263ab72d1bfa7a43e7e6b8aec
+This project was turned in the state from commit: https://github.com/Bauaser-kun/BoardGameRentalEngine/commit/158faa2984d8a8c823ea3102b461b27b24d2f951
 
 (If you are the one who will evaluate my project the actual commit you got link to is one commit later, and it consists only of updating link above)
 
