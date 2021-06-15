@@ -22,22 +22,25 @@ public class MailScheduler {
         LocalDate topicDate = calculateTopicCreationDate();
         String dateFormatted = formatDateForHttpRequest(topicDate);
         AtlasForumTopicDto whatDidYouPlay = atlasClient.getForumTopics("what did you play this week? " + dateFormatted).get(0);
+        System.out.println(whatDidYouPlay.getPost_url());
         emailService.send(
                 new Mail(
                         adminConfig.getAdminMail(),
-                        "What did you play?",
-                        "Hey there check this week discussion about board games! \n" + whatDidYouPlay.getPost_url()
+                        "What did YOU play?",
+                        "Hey there! " +
+                                "\ncheck this week discussion about board games that people played this week! " +
+                                "\n" + whatDidYouPlay.getPost_url()
                 )
         );
     }
 
-    private String formatDateForHttpRequest(LocalDate topicDate) {
+    String formatDateForHttpRequest(LocalDate topicDate) {
         return "(" + topicDate.getMonthValue() + "/" + topicDate.getDayOfMonth() + "/" + topicDate.getYear() + ")";
     }
 
-    private LocalDate calculateTopicCreationDate() {
-        LocalDate creationDate = LocalDate.of(2021, 06, 14);
-        while (creationDate.isBefore(LocalDate.now().plusDays(7))) {
+    LocalDate calculateTopicCreationDate() {
+        LocalDate creationDate = LocalDate.of(2021, 06, 7);
+        while (creationDate.isBefore(LocalDate.now().minusDays(7))) {
             creationDate = creationDate.plusDays(7);
         }
 

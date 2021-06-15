@@ -32,6 +32,7 @@ public class AtlasView extends VerticalLayout {
     Button back = elements.createButton("Back to games");
     TextField searchField = elements.createSearchField("What do we look for?");
     Button JSON = elements.createButton("search result as JSON");
+    Button forumTopics = elements.createButton("JSON list with BGA forum topics \n Sorry I didn't make it in time to make additional view with topics");
 
     public AtlasView() {
         atlasGrid.setColumns("name");
@@ -39,6 +40,7 @@ public class AtlasView extends VerticalLayout {
         kickstarter.addClickListener(event -> showKickstarters());
         kickstarterJSON.addClickListener(event -> getUI().get().getPage().open("V1/atlas/kickstarter"));
         JSON.addClickListener(event -> searchJSON());
+        forumTopics.addClickListener(event -> getUI().get().getPage().open("V1/atlas/forum"));
         back.addClickListener(event -> UI.getCurrent().navigate(MainView.class));
         searchField.addValueChangeListener(event -> {
             try {
@@ -48,7 +50,7 @@ public class AtlasView extends VerticalLayout {
             }
         });
         HorizontalLayout buttons = new HorizontalLayout(kickstarter, searchField, back);
-        HorizontalLayout buttonsJSON = new HorizontalLayout(kickstarterJSON, JSON);
+        HorizontalLayout buttonsJSON = new HorizontalLayout(kickstarterJSON, JSON, forumTopics);
 
         add(buttons, buttonsJSON, atlasGrid);
     }
