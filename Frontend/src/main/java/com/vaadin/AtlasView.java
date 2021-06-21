@@ -24,7 +24,8 @@ public class AtlasView extends VerticalLayout {
     @Autowired
     BoardGameDbService service;
 
-    private ViewElements elements = new ViewElements();
+    @Autowired
+    private ViewElements elements;
     private Grid<AtlasGameDto> atlasGrid = new Grid<>(AtlasGameDto.class);
 
     Button kickstarter = elements.createButton("Kickstarter");
@@ -37,6 +38,7 @@ public class AtlasView extends VerticalLayout {
     public AtlasView() {
         atlasGrid.setColumns("name");
         atlasGrid.addComponentColumn(atlasGameDto -> new Anchor(atlasGameDto.getUrl(), "Check on Game Board Atlas"));
+        //atlasGrid.addComponentColumn(atlasGameDto -> new Anchor(service.getGame(atlasGameDto.getName()), "Check if you can rent it!"));
         kickstarter.addClickListener(event -> showKickstarters());
         kickstarterJSON.addClickListener(event -> getUI().get().getPage().open("V1/atlas/kickstarter"));
         JSON.addClickListener(event -> searchJSON());

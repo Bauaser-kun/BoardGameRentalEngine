@@ -23,7 +23,8 @@ public class RegisterView extends Composite {
     @Autowired
     private UserController controller;
 
-    private ViewElements elements = new ViewElements();
+    @Autowired
+    private ViewElements elements;
 
     Button back = elements.createButton("Back");
 

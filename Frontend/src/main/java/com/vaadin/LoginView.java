@@ -23,7 +23,8 @@ public class LoginView extends Composite<VerticalLayout> {
     @Autowired
     UserDbService dbService;
 
-    private ViewElements elements = new ViewElements();
+    @Autowired
+    private ViewElements elements;
     private LoginForm login = new LoginForm();
 
     VerticalLayout layout = elements.createCenteredVerticalLayout();

@@ -14,7 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Route
 public class MainView extends VerticalLayout {
     private Grid<BoardGame> grid = new Grid<>(BoardGame.class);
-    private ViewElements elements = new ViewElements();
+
+    @Autowired
+    private ViewElements elements;
 
     TextField typeFilter = elements.createFilterField("Find game by mechanics");
     TextField titleFilter = elements.createFilterField("Find game");
