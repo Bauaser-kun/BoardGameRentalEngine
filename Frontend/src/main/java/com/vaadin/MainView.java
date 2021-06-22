@@ -11,12 +11,11 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Route
+@Route("")
 public class MainView extends VerticalLayout {
     private Grid<BoardGame> grid = new Grid<>(BoardGame.class);
-
-    @Autowired
-    private ViewElements elements;
+    private RentGameForm rentGameForm = new RentGameForm(this);
+    private ViewElements elements = new ViewElements();
 
     TextField typeFilter = elements.createFilterField("Find game by mechanics");
     TextField titleFilter = elements.createFilterField("Find game");
@@ -29,16 +28,17 @@ public class MainView extends VerticalLayout {
     public MainView(BoardGameDbService dbService){
         this.dbService = dbService;
 
-        grid.setColumns("id","copies", "price", "title", "type");
+        grid.setColumns("id", "title", "type", "copies", "price");
 
         typeFilter.addValueChangeListener(event -> updateGridWithMechanicSearch());
         titleFilter.addValueChangeListener(event -> updateGridWithTitleSearch());
         HorizontalLayout filters = new HorizontalLayout(titleFilter, typeFilter);
+        HorizontalLayout rentForm = new HorizontalLayout(rentGameForm);
 
         atlasButton.addClickListener(event -> UI.getCurrent().navigate(AtlasView.class));
         loginButton.addClickListener(event -> UI.getCurrent().navigate(LoginView.class));
 
-        add(loginButton, grid, filters, atlasButton);
+        add(loginButton, grid, rentForm, filters, atlasButton);
         refreshGrid();
     }
 

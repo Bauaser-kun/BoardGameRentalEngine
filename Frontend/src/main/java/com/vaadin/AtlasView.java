@@ -24,8 +24,8 @@ public class AtlasView extends VerticalLayout {
     @Autowired
     BoardGameDbService service;
 
-    @Autowired
-    private ViewElements elements;
+    private ViewElements elements = new ViewElements();
+
     private Grid<AtlasGameDto> atlasGrid = new Grid<>(AtlasGameDto.class);
 
     Button kickstarter = elements.createButton("Kickstarter");

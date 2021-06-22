@@ -7,6 +7,14 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
 
 public class ViewElements {
+    public TextField createTextField(String placeholder) {
+        TextField textField = new TextField();
+        textField.setPlaceholder(placeholder);
+        textField.setClearButtonVisible(true);
+
+        return textField;
+    }
+
     public TextField createFilterField(String placeholder) {
          TextField textField = new TextField();
          textField.setPlaceholder(placeholder);
